@@ -1,0 +1,56 @@
+---
+layout: post
+title: .Rbuildignore
+date: 2014-05-21 19:21:10.000000000 +02:00
+categories:
+- GNU R
+- Package R
+- Programmation
+tags:
+- GNU R
+- package
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>Lors de la construction d'un package, il peut être utile d'ignorer certains fichiers présents dans le projet. Pour ce faire, on peut créer un fichier <code>.Rbuildignore</code> comme indiqué dans la <a href="http://cran.r-project.org/doc/manuals/R-exts.html#index-_002eRbuildignore-file">documentation du CRAN</a>.</p>
+<p><!--more--></p>
+<p>Le fichier <code>.Rbuildignore</code> doit être à la racine du dossier du package. Ce fichier consiste en une liste d'expressions régulière de fichier à exclure, une par ligne. Ces expressions ne sont pas sensibles à la case.</p>
+<p>D'après <a href="http://cran.r-project.org/doc/manuals/R-exts.html#index-_002eRbuildignore-file">le manuel</a>, certains fichiers sont inutiles à indiquer car automatiquement ignorés par <code>R CMD Build</code> :</p>
+<ul>
+<li>Les dossiers :
+<ul>
+<li>Les dossiers des <a href="https://fr.wikipedia.org/wiki/Logiciel_de_gestion_de_versions">VCS</a> (<code>CVS/</code>, <code>.svn/</code>, <code>.arch-ids/</code>, <code>.bzr/</code>, <code>.git/</code> ou <code>.hg/</code>).</li>
+<li>Les dossiers de l'IDE eclispe (<code>.metadata/</code>)</li>
+<li>Les dossiers dont les noms terminent par <code>.Rcheck</code>, <code>Old</code> ou <code>old</code></li>
+</ul>
+</li>
+<li>Les fichiers
+<ul>
+<li><code>GNUMakefile</code>, <code>Read-and-delete-me</code> </li>
+<li>dont les noms commencent par <code>.#</code> ou débutent et finissent par <code>#</code></li>
+<li>dont les noms terminent par <code>~</code>, <code>.bak</code> ou <code>.swp</code></li>
+<li>les fichiers présents dans les dossiers <code>R/</code>, <code>demo/</code> et <code>man</code> n'ayant pas des noms valides.</li>
+</ul>
+</li>
+</ul>
+<p>J'ai également remarqué que sous la version 3.1.0 de R, en retirant le fichier <code>.Rbuildignore</code> puis en listant les fichiers du package par <code>ls -la</code> que certains autres fichiers sont retirés tous les fichiers dont le nom débute par un point. Donc pas uniquement les <code>.#</code>. Ceci fait qu'il me parait inutile d'ajouter par exemple <code>.gitignore</code> ou <code>.DS_Store</code> sous OS X.</p>
+<p>Au final, mon <code>.Rbuildignore</code> ressemble à ceci</p>
+<pre><code># Ignores these files when building. For more information about
+# .Rbuildignore, see
+# http://cran.r-project.org/doc/manuals/R-exts.html#index-_002eRbuildignore-file
+
+# Rstudio Files
+^.*.Rproj$
+
+# GitHub files
+README.md
+</code></pre>

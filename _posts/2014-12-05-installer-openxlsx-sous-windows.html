@@ -1,0 +1,41 @@
+---
+layout: post
+title: Installer openXLSX sous Windows
+date: 2014-12-05 10:49:47.000000000 +01:00
+categories:
+- GNU R
+- Package R
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<h2>Contexte</h2>
+<p>Le package <a href="cran.r-project.org/web/packages/openxlsx/index.html">openxlsx</a> est actuellement la solution la plus élégante pour travailler directement sur des fichiers au <a href="fr.wikipedia.org/wiki/Office_Open_XML">format XLSX</a> dans <a href="r-project.org">R</a>. Son principal avantage face aux autres solutions (xlsx ou XLConnect) est de s'affranchir des dépendances Java.</p>
+<p>Ce billet traitera de l'installation de ce package, en particulier sous Windows.</p>
+<p><!--more--></p>
+<h2>Installation</h2>
+<p>L'installation du package peut se faire de manière traditionnelle dans R avec :</p>
+<pre><code>install.packages("openxlsx")
+</code></pre>
+<h2>Pour Windows</h2>
+<p>Pour Windows, une étape supplémentaire est nécessaire : l'installation des RTools. Pour se faire il suffit de :</p>
+<ol>
+<li>Télécharger la <a href="http://cran.r-project.org/bin/windows/Rtools/">bonne version des RTools sur la page du CRAN</a>.</li>
+<li>Lancer l'installateur (et donc avoir les droits administrateur sur sa machine)</li>
+<li>Si l'installation semble problématique, voir <a href="https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows">ce tutoriel</a>.</li>
+</ol>
+<p>Autre possiblité, directement dans R :</p>
+<pre><code>installr::install.rtools()
+</code></pre>
+<p>Pourquoi cette étape supplémentaire? Car <em>openxlsx</em> a besoin d'un logiciel pour <a href="https://fr.wikipedia.org/wiki/Office_Open_XML#Le_paquet">dézipper les fichiers XLSX</a>, qui sont en effet que des <a href="fr.wikipedia.org/wiki/ZIP_%28format_de_fichier%29">archives ZIP</a> contenants plusieurs fichiers XML. Ce logiciel est déjà installé par défaut sur MacOS et Linux, mais pas sous Windows.</p>
+<h2>Conclusion</h2>
+<p>Le format XLSX est largement répandu dans le monde du travail. C'est un progrès par rapport au format XLS mais ce format pose encore de nombreux problèmes. Cependant dans R c'est acutellement le format de fichier de tableur qui me semble le mieux géré. Il serait bon qu'il existe un package équivalent pour les fichiers <a href="https://fr.wikipedia.org/wiki/OpenDocument">ODS</a>. Des projets sont en cours mais rien de convaincant pour l'instant.</p>

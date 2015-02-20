@@ -1,0 +1,37 @@
+---
+layout: post
+title: VIM pour MacOS X
+date: 2014-10-05 09:04:11.000000000 +02:00
+categories:
+- Mac OS
+- Programmation
+- Vim
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/10/vim.png"><img src="assets/vim.png" alt="vim" width="199" height="200" class="alignleft size-full wp-image-222" /></a></p>
+<p>Mon activité actuelle me fait passer de plus en plus de temps dans un éditeur de texte. J'en ai un pour <a href="http://www.r-project.org/">R</a> (<a href="http://www.rstudio.com/products/RStudio/">Rstudio</a>), un autre pour éditer les documents <a href="http://daringfireball.net/projects/markdown/">MarkDown</a> (<a href="http://bywordapp.com/">ByWord</a>), les documents LaTeX (<a href="https://en.wikipedia.org/wiki/TeXstudio">TexStudio</a>) et encore un quatrième pour le reste (<a href="http://www.sublimetext.com/">Sublime Text</a>). Ce dernier commence à me servir de <em>couteau suisse</em> et à remplacer peu à peu les précédents, mais j'ai un frein à son utilisation : il n'est pas libre. Du coup, je ne sais pas comment il va évoluer dans le temps.</p>
+<p>Je suis tombé la semaine dernière sur un libre "<a href="https://vimebook.com/">VIM pour les humains</a>" qui m'a donné envie de donner une seconde chance à cet éditeur de texte. Même si <a href="https://fr.wikipedia.org/wiki/Vi">vi</a> existe depuis plus de 40 ans et sa version améliorée, <a href="https://fr.wikipedia.org/wiki/Vim">vim</a>, depuis plus de 20 ans, ils semblent être encore taillés pour l'utilisation d'aujourd'hui et de demain. Je l'avais déjà essayé, mais laissé de côté, car trop aride. Avec ce livre, j'ai été convaincu de lui laisser une seconde chance.</p>
+<p>Dans ce billet je décrirai <strong>les étapes pour avoir un VIM utilisable sur Mac OS X 10.9</strong>.</p>
+<p><!--more--></p>
+<h2>Installer MacVim</h2>
+<p><a href="https://code.google.com/p/macvim/">MacVim</a> donne une interface graphique à VIM sur Mac, avec de nombreux menus bien pensés et des raccourcis adaptés Mac OS X.</p>
+<p>La dernière version est <a href="https://github.com/b4winckler/macvim/releases">librement téléchargeable sur GitHub</a>. L'archive est au format <code>.tbz</code> (Bzip Compressed Tar Archive) reconnu nativement par l'Utilitaire d'Archive de Mac OS X. Ensuite, il suffit simplement de glisser MacVim dans le dossier Applications.</p>
+<h2>Désactiver la palette de caractère lorsque touche enfoncée</h2>
+<p>Depuis Mac OS X 10.7, lorsque l'on reste appuyé sur une touche une petite palette apparait pour proposer pour la touche en question tous les accents et formes spéciales du caractère disponible. Ce comportement est hérité d'iOS. Il est certainement très pratique pour des débutants, mais pénible pour un programmeur. En effet, impossible de rester appuyé sur une touche pour répéter un caractère.</p>
+<p>Dans VIM, ceci est très pénible car on utiliser les touches de "hjkl" pour se déplacer. Pour <a href="http://www.defaults-write.com/disable-press-and-hold-option-in-mac-os-x-10-7/#.VDD5xuf2K00">désactiver ce comportement</a> de Mac OS X, il suffit d'ouvrir le terminal et de taper :</p>
+<pre><code>defaults write -g ApplePressAndHoldEnabled -bool false
+</code></pre>
+<p>Puis redémarrer la machine.</p>
+<h2>Fichier de configuration</h2>
+<p>Rien de spécifique à Mac OS X pour l'instant. Je me suis pour l'instant contenté de suivre les propositions du livre <a href="https://vimebook.com/">VIM pour les humains</a>.</p>

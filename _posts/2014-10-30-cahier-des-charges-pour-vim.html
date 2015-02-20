@@ -1,0 +1,58 @@
+---
+layout: post
+title: Cahier des charges pour VIM
+date: 2014-10-30 09:22:38.000000000 +01:00
+categories:
+- GNU R
+- Programmation
+- Vim
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>Depuis 3 semaines je tente d'utiliser de plus en plus VIM afin d'améliorer ma productivité. Après avoir suivi quelques formations, je commence à être relativement convaincu. Cependant le logiciel a besoin de beaucoup d'adaptations pour retrouver les mêmes fonctionnalités que je connais avec ByWord pour le Markdown, RStudio pour le R et Sublime Text pour le reste. Dans ce billet je vais décrire le cahier des charges pour que VIM deviennent pour moi un outil performant. Dans de prochains billets je décrirait les solutions que j'ai trouvées pour répondre à ce cahier des charges fonctionnel.</p>
+<p><!--more--></p>
+<h2>Gestion des extension</h2>
+<p>Les extensions donnent beaucoup de capacité d'adaptation à VIM. Cependant leur gestion n'est pas simple, que ce soit leur installation ou leur mise à jour. J'aimerai donc trouver un système de gestion des extension de VIM qui soit à peu près au niveau de celui de Sublime Text, qui est excellent.</p>
+<p>Fonctionnalité attendues :</p>
+<ul>
+<li>Installation à partir du logiciel</li>
+<li>Mise à jour simple</li>
+<li>Désinstallation simple</li>
+<li>Aide à l'a configuration</li>
+<li>Possibilité de désactiver une extension</li>
+<li>Système pour naviguer dans les extensions installées</li>
+</ul>
+<h2>Gestionnaire de fichier</h2>
+<ul>
+<li>Naviguer dans une arboresence</li>
+<li>Fuzzy Finder</li>
+<li>Modification (chercher et remplacer) dans tous les fichiers d'une arboresence.</li>
+</ul>
+<h2>Markdown</h2>
+<p>Se rapprocher de ByWord</p>
+<ul>
+<li>Coloration adaptée</li>
+<li>Police agréable</li>
+<li>Auto-indentation</li>
+<li>Bonne césure des mots</li>
+<li>Correcteur orthographique basique</li>
+</ul>
+<h2>R</h2>
+<ul>
+<li>Coloration syntaxique</li>
+<li>Autocomplétion avec introspection du code</li>
+<li>Accès rapide à l'aide</li>
+<li>Système équivalent au <em>RProject</em> de <em>RStudio</em></li>
+<li>Auto-indentation</li>
+<li>Bonne gestion de RMarkdown</li>
+</ul>

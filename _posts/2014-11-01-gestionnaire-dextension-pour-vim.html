@@ -1,0 +1,60 @@
+---
+layout: post
+title: Gestionnaire d'extension pour VIM
+date: 2014-11-01 14:36:04.000000000 +01:00
+categories:
+- Vim
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<h2>Objectif</h2>
+<p>Trouver un gestionnaire d'extensions de VIM avec des fonctionnalités proches de celui de Sublime Text</p>
+<p><!--more--></p>
+<h2>Fonctionnalités attendues</h2>
+<ul>
+<li>Installation rapide d'un plugin</li>
+<li>Mise à jour automatique</li>
+<li>Désinstallation rapide</li>
+<li>Gestion de dépendances</li>
+<li>Éventuellement, possibilité d'activer ou désactiver facilement un plugin</li>
+</ul>
+<h2>Résultats</h2>
+<h3>Pathogen</h3>
+<p><a href="https://github.com/tpope/vim-pathogen">https://github.com/tpope/vim-pathogen</a></p>
+<p><em>Pathogen</em> est celui que j'ai installé lors de mon initiation à VIM avec le livre <a href="https://vimebook.com/">Vim pour les humains</a>. Il ne sert à priori qu'à gérer le fait que chaque plugin est dans un répertoire séparé, ce qui facilite leur gestion. Cependant il ne répond pas l'ensemble du cahier des charges.</p>
+<p><a href="http://stackoverflow.com/questions/2458398/packageplugin-management-for-vim">Certains indiquent</a> que <em>Pathogen</em> a comme avantage de garder le contrôle sur ce que l'on installe, sans être lié à des services dont on ne connais pas la fiabilité.</p>
+<h3>Vundle</h3>
+<p><a href="https://github.com/gmarik/Vundle.vim">https://github.com/gmarik/Vundle.vim</a></p>
+<p>Il permet de :</p>
+<ul>
+<li>Suivre et configurer les plugins directement dans le fichier <code>.vimrc</code></li>
+<li>Installer des plugins</li>
+<li>Mettre à jour des plugins</li>
+<li>Chercher par nom tous les scripts Vim disponibles</li>
+<li>Nettoyer les plugin non utilisés</li>
+<li>Réaliser l'ensemble de ces actions avec une seule touche à l'aide du mode interactif</li>
+</ul>
+<p>Om semble être donc un très bon candidat. Cependant, le créateur de <em>Vundle</em>, ,<a href="http://gmarik.info/blog/2014/02/04/why-i-stopped-contributing-to-vundle">semble avoir laissé tombé son développement</a>. En cause : l'absence de soutient financier, manque de temps et l'arrivée d'un fork, <a href="https://github.com/Shougo/neobundle.vim">neobundle</a>, un peu trop semblable à son goût.</p>
+<p>Ceci dit, sur la page de <em>neobundle</em>, ils conseillent l'utilisation de <em>Vundle</em> pour les débutant comme moi, donc il reste un très bon candidat.</p>
+<h3>Neobundle</h3>
+<p><a href="https://github.com/Shougo/neobundle.vim">https://github.com/Shougo/neobundle.vim</a></p>
+<p>Fork de <em>Vundle</em> qui se veut plus complexe, donc peut être loin de l'aspect KISS. Il est indiqué comme étant en développement actif, instable. Donc pour l'instant je ne le testerait pas.</p>
+<h2>Conclusion</h2>
+<p>J'ai finalement choisi de continuer à utiliser <em>Pathogen</em> car :</p>
+<ul>
+<li>Je l'ai déjà installé et je n'ai pas envie de risquer de tout devoir réinstaller en utilisant un nouveau gestionnaire de paquet</li>
+<li>Car il ne télécharge pas automatiquement les mises à jours et les plugin. Pour l'instant, j'en utilise assez peu et je préfère garder un minimum de contrôle sur ce qu'il se passe</li>
+<li>Car le projet semble encore maintenu, contrairement un Vundle qui semble péricliter</li>
+<li>Car il est stable contrairement à Neobundle</li>
+</ul>
+<p>Je ne répond pas à l'objectif mais ma recherche m'a fait revoir mes besoin!</p>

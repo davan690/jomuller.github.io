@@ -1,0 +1,47 @@
+---
+layout: post
+title: Bilan après 2 mois d'utilisation de VIM et R
+date: 2014-12-20 12:29:29.000000000 +01:00
+categories:
+- GNU R
+- Programmation
+- Vim
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/12/de-rstudio-a-vim.jpg"><img src="assets/de-rstudio-a-vim.jpg" alt="de rstudio a vim" width="125" height="222" class="alignleft size-full wp-image-352" /></a> Cela fait un peu <a href="http://jomuller.fr/?p=219">plus de deux mois</a> que je tente d'utiliser Vim comme mon éditeur de texte principal. Je l'utilise désormais quotidiennement pour éditer mes fichiers en R, Markdown et Python.</p>
+<p>Dans ce billet, je vais décrire mon chemin vers un environnement de travail avec Vim et R.</p>
+<p><!--more--></p>
+<h2>Il y a deux ans...</h2>
+<p>J'utilise R depuis plus de 2 ans maintenant. J'ai débuté en utilisant simplement le GUI fourni avec <a href="http://cran.r-project.org/bin/macosx/">R pour Mac OS X</a> qui est assez basique, mais contient les fonctions principales : un éditeur de texte qui est lié avec une instance de R tournant dans une console dédiée et une fenêtre pour les sorties graphiques. La documentation est facilement accessible avec un navigateur intégré.</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/12/Rgui.png"><img src="assets/Rgui-300x166.png" alt="Rgui" width="300" height="166" class="aligncenter size-medium wp-image-343" /></a></p>
+<p>J'étais cependant frustré par l'éditeur de texte : la coloration syntaxique est minimaliste, il n'y a pas d'autocompletion, les outils de recherches et remplacement sont simples, mais très limités. Bref, c'est propre, mais trop limité à l'usage et il n'y a pas (à ma connaissance) d'extension possible.</p>
+<p>Je codais en parallèle des projets en Python et en C++ en utilisant <a href="http://www.eclipse.org/">Eclipse IDE</a> et j'avais pris gout à toutes les aides disponibles dans ces IDE qui me permettaient d'augmenter ma productivité. J'ai tenté d'utiliser R avec Eclipse mais sans que le résultat soit probant. De plus, je trouvais Eclipse très lourd et souvent pour de petites corrections je me contentais d'éditer mon code dans un petit éditeur de texte.</p>
+<h2>...arrive RStudio</h2>
+<p><a href="http://www.rstudio.com/products/RStudio/">RStudio</a> m'a permis de vraiment programmer avec R et ne plus me contenter d'écrire de petits scripts sans cohérence. Il permet d'avoir un environnement parfaitement adapté à R dès l'installation. Tout (ou presque) y est : coloration syntaxique, autocomplétion avec aide intégrée, explorateur d'environnement... et en plus, intégration à GIT, tout un système pour faciliter la création de packages, le magnifique principe des projets (<code>.Rproj</code>) qui évitent de devoir faire des <code>setwd()</code> à chaque fois que l'on reprend son travail et de retrouver son environement lors de la dernière session.</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/12/rstudio.png"><img src="assets/rstudio-300x220.png" alt="rstudio" width="300" height="220" class="aligncenter size-medium wp-image-344" /></a></p>
+<p>Mais mon niveau en programmation augmentait en parallèle avec mes exigences vis-à-vis de mes outils. Et je me suis retrouvé à l'étroit avec RStudio. Impossible de mettre deux pages de codes l'une à côté de l'autre, ma coloration syntaxique imparfaite, pas de <em>snippet</em> personnalisable, un système assez lourd surtout pour éditer de petits fichiers.</p>
+<p>Et surtout, lorsque je devais éditer de petits bouts de codes d'un autre langage (Python, C++, Bash, un Makefile) il fallait relancer un autre éditeur.</p>
+<p>Je me suis donc mis en quête d'un éditeur de texte unique. Pendant un moment Sublime Text était un bon candidat, jusqu'à ce que je me décide de me lancer avec VIM.</p>
+<h2>... pour en arriver à VIM</h2>
+<p>Aujourd'hui j'utilise presque exclusivement VIM pour l'ensemble de mes projets. Il m'a fallu deux mois pour m'y habituer et retrouver à peu près la même productivité que celle que j'avais avant. Mais j'y ai gagné en flexibilité, j'ai un éditeur de texte pour tous les fichiers que je traite et je n'utilise presque plus ma souris.</p>
+<p>Une session de R ressemble désormais à ce que l'on voit sur l'image suivante :</p>
+<p>[caption id="attachment_350" align="aligncenter" width="604"]<br />
+[<img src="assets/vim_vartors-1024x640.jpg" alt="Vim et R" width="604" height="378" class="size-large wp-image-350" />]<a href="http://jomuller.fr/wp-content/uploads/2014/12/vim_vartors.jpg">8</a> Session de travail avec Vim et R. La sortie graphique (X11) est sur un autre écran.[/caption]</p>
+<p>Ce fut assez difficile à mettre en place, mais j'ai désormais énormément gagné en flexibilité. Tout passe par le trio <a href="http://iterm2.com/">iTerm</a> + <a href="http://tmux.sourceforge.net/">Tmux</a> + Vim. Je peux dimensionner les fenêtres comme je le souhaite, en avoir autant que nécessaire, disposer de tous les outils en ligne de commande sous les doigts. Je ne passe plus mon temps à faire des copier-collé et à tenter de cliquer partout. Je peux passer plusieurs heures de suites sur un projet sans lâcher mon clavier et ne jamais toucher ma souris.</p>
+<p>De plus j'ai vraiment l'impression de maîtriser mon outil.</p>
+<p>Autre avantage : je peux enfin travailler sur mon 11 pouces en adaptant en permanence la configuration des fenêtres, comme le montre l'image suivante.</p>
+<p>[caption id="attachment_376" align="aligncenter" width="300"][<img src="assets/vim11pouces-300x169.jpg" alt="Vim + R + Git + Tmux sur un 11 pouces" width="300" height="169" class="size-medium wp-image-376" />]<a href="http://jomuller.fr/wp-content/uploads/2014/12/vim11pouces.jpg">11</a> Vim + R + Git + Tmux sur un 11 pouces[/caption] J'ai découvert des outils fantastiques comme les <em>fuzzy finders</em> ou les <em>snippets</em> personnalisables.</p>
+<h2>Conclusion</h2>
+<p>Je suis désormais suffisamment convaincu par cette approche pour continuer à l'utiliser. Pour l'instant, après deux mois de pratique, je suis juste arrivé à mon avis à mon niveau de productivité initial, mais je ne sais que j'ai une nouvelle marge d'évolution possible alors qu'avant je plafonnais.</p>
+<p>Je prévois de décrire dans un prochain billet comment fonctionne mon cet environnement de travail actuellement et dans un autre comment l'installer.</p>

@@ -1,0 +1,30 @@
+---
+layout: post
+title: Noms de fichiers sous Windows XP pour utilisation avec Latex et R
+date: 2014-05-02 11:01:42.000000000 +02:00
+categories:
+- Bonnes pratiques
+- GNU R
+- Programmation
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>Dans la série des <a href="?cat=11">bonnes pratiques de codage sous R</a> dans le cadre de la consultation de méthodologie, je souhaite fixer une convention de nommage pour les noms de fichiers sous Windows XP. Ce système d'exploitation est certes <a href="http://windows.microsoft.com/en-US/windows/end-support-help" title="Windows XP end of Support">obsolète depuis le 8 avril 2014 </a>mais équipe encore l'ensemble des postes de travail mon service, et ce encore pour un petit bout de temps.</p>
+<p><!--more--></p>
+<p>Il pose de nombreux problèmes en particulier sur la gestion des jeux de caractères type UTF-8. De plus nous utilisons beaucoup LaTeX dans notre service. Ce dernier est très <a href="http://stackoverflow.com/questions/2444385/include-a-tex-file-with-spaces-in-the-filename" title="Latex spaces on StackOverFlow">sensible aux noms de fichiers exotiques</a>, en particulier avec des espaces.</p>
+<h2>Proposition Pour éviter ces désagréments, une règle simple : tous les noms de fichier et de dossiers doivent être écrits en utilisant exclusivement les caractères ASCII allant de a-z et A-Z sans aucun caractère spécial, avec comme exceptions le underscore "_" (celui du 8) et le tiret court "-" (celui du 6). Tolérance sur les espaces pour les dossiers, aucune pour les fichiers. Les fichiers de scripts R doivent toujours se terminer avec l'extension</h2>
+<p><em>.R</em></p>
+<h2>Exemples</h2>
+<h2>Bons noms de fichier "un_script.R" "Rscripts/unAutreScript.R"</h2>
+<h2>Mauvais "un script.R" "un_script.r" "R script/unAutreScript.R"</h2>
+<h2>Conclusion Permet de fonctionner correctement même lorsque déplace un projet vers un autre environnement.</h2>

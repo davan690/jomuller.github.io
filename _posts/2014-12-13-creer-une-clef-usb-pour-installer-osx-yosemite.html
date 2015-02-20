@@ -1,0 +1,44 @@
+---
+layout: post
+title: Créer une clef USB pour installer OSX Yosemite
+date: 2014-12-13 13:08:16.000000000 +01:00
+categories:
+- Mac OS
+tags:
+- Administration système
+- Clef USB
+- Installation
+- Yosemite
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/12/Osx-yosemite-logo.png"><img src="assets/Osx-yosemite-logo-150x150.png" alt="Osx-yosemite-logo" width="150" height="150" class="alignleft size-thumbnail wp-image-324" /></a> Depuis la disparition des lecteurs DVD sur mac, une réinstallation complète du système impose d'utiliser un disque externe. Je vais décrire ici rapidement comment créer une clef USB pour installer OSX Yosemite (10.10).</p>
+<p><!--more--></p>
+<h2>Matériel nécessaire</h2>
+<ul>
+<li>Un Mac ayant accès à l'App Store</li>
+<li>Une bonne connexion à internet</li>
+<li>Une clef USB de plus de 8Go</li>
+</ul>
+<h2>Etapes</h2>
+<h3>Téléchager OSX Yosemite</h3>
+<p>Depuis l'App Store, télécharger gratuitement OSX Yosemite (5,17Go)</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/12/dl_yosemite.jpg"><img src="assets/dl_yosemite-300x13.jpg" alt="dl_yosemite" width="300" height="13" class="aligncenter size-medium wp-image-317" /></a></p>
+<h3>Préparer la clef USB</h3>
+<p>Initialiser la clef USB de plus de 8 Go en Mac OS X étendu journalisé à l'aide de l'Utilitaire de disque et nommer cette clef <em>Untitled</em>.</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/12/utilitaire_disque.jpg"><img src="assets/utilitaire_disque-300x239.jpg" alt="utilitaire_disque" width="300" height="239" class="aligncenter size-medium wp-image-316" /></a></p>
+<h3>Installer OSX sur la clef</h3>
+<p>Dans le terminal lancer la commande</p>
+<pre><code> sudo /Applications/Install\ OS\ X\ Yosemite.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ OS\ X\ Yosemite.app --nointeraction
+</code></pre>
+<p>L'opération est longue et il n'y a pas de barre d'avancée. Si vous souhaitez avoir une idée de l'avancée, vous pouvez ouvrir le <em>moniteur d'activité</em>, onglet <em>Disque</em> et suivre l'opération <em>createinstallmedia</em>. Il est censé "graver" environ 5Go sur la clef.</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/12/suivi1.png"><img src="assets/suivi1-300x193.png" alt="suivi" width="300" height="193" class="aligncenter size-medium wp-image-329" /></a></p>

@@ -1,0 +1,54 @@
+---
+layout: post
+title: Quel nom pour un package R?
+date: 2014-06-14 08:53:41.000000000 +02:00
+categories:
+- Bonnes pratiques
+- GNU R
+- Package R
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>Le nom d’un package R est une étape qui me parait importante. En effet, ce nom sera le premier contact avec l’utilisateur et il sera également souvent appelé à l’aide des fonctions <code>library()</code> ou <code>require()</code>. Ce nom doit donc à la fois avoir du sens, donner une indication claire sur ce que permet le package et en même temps être facile à écrire pour pouvoir être appelé sans erreur.</p>
+<p><!--more--></p>
+<p>Il <a href="http://cran.r-project.org/web/packages/">existe sur le CRAN</a> plus de 5000 packages. Ainsi il faut aussi éviter de choisir un nom déjà existant ou proche, qui risquerait de créer de la confusion auprès de l’utilisateur.</p>
+<p>L’objectif de cet article est de décrire quelles sont les règles les plus adéquates pour trouver un bon nom pour un package R étant destiné à être publié sur le CRAN.</p>
+<h2>Méthode</h2>
+<p>Une recherche a été effectuée d’abord sur <a href="http://r-project.org">r-project.org</a> afin de trouver une documentation officielle sur le sujet. Ensuite le nom des <a href="http://cran.r-project.org/web/packages/">packages déjà existant</a> sur le CRAN a été analysé. Une recherche plus large a été effectuée sur un moteur de recherche généraliste. Enfin, une question a été posée sur le site de question-réponse <a href="http://stackoverflow.com/">stackoverflow</a>.</p>
+<h2>Résultats</h2>
+<h3>Documentation officielle</h3>
+<p>La seule référence au nom du package trouvé dans la documentation sur la création de packages, « <a href="http://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R Extensions</a> », concerne le champ <code>package</code> dans le <a href="http://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file">chapitre sur le fichier <code>DESCRIPTION</code></a>. Il est indiqué :</p>
+<blockquote>
+<p>The mandatory ‘Package’ field gives the name of the package. This should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot. En résumé, les contraintes sont :</p>
+</blockquote>
+<ul>
+<li>Uniquement des caractères ASCII [a-z], [A-Z], [0-9], et [.] ;</li>
+<li>Longueur > à 2 caractères ;</li>
+<li>Le premier caractère doit être une lettre ;</li>
+<li>Ne doit pas finir avec un point.</li>
+</ul>
+<p>Donc aucune limite en terme de nombre de caractères.</p>
+<h3>Vérifier la disponibilité</h3>
+<p>La deuxième étape pour choisir un nom est d’éviter qu’il soit déjà utilisé. Pour se faire, on peut suivre les instructions proposées dans cette <a href="http://stackoverflow.com/questions/7381932/names-of-r-packages">question de stackoverflow</a>, en particulier l’utilisation de la fonction <code>available.packages()</code> afin d’explorer les packages existant sur le CRAN.</p>
+<p>En plus de la liste des packages du CRAN, il serait bon d’analyser également ceux de <a href="http://www.bioconductor.org/packages/release/BiocViews.html#___Software">Bioconductor</a> et également ceux en cours de développement sur <a href="https://github.com/search?l=R&amp;o=desc&amp;q=package&amp;ref=advsearch&amp;s=updated&amp;type=Repositories">GitHub</a> et <a href="http://r-forge.r-project.org/">R-Forge</a></p>
+<h3>Règles de nommage</h3>
+<p>Tout comme il existe des <a href="http://adv-r.had.co.nz/">règles pour écrire du code propre</a>, en particulier sur le nommage des variables, on peut imaginer des règles pour le nom des packages. Après avoir posé la <a href="http://stackoverflow.com/questions/24201568/whats-a-good-r-package-name">question sur stackoverflow</a>, il apparait que la seule référence intéressante est le chapitre « <a href="http://adv-r.had.co.nz/Package-basics.html">Package basics</a> » de l’ouvrage « <a href="http://adv-r.had.co.nz/">Advanced R</a> » en cours de rédaction par Hadley Wickham. Le paragraphe « Getting started » donne les indications suivantes en plus de celles du CRAN :</p>
+<ul>
+<li>Le nom doit être facilement trouvé s’il est recherché dans Google ;</li>
+<li>Éviter de mélanger les lettres majuscules et minuscules ;</li>
+<li>Utiliser des abréviations ;</li>
+<li>Ajouter un « R » dans le nom ;</li>
+<li>Trouver un nom évocateur et le modifier pour qu’il soit unique.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Le nom d’un package R doit être à la fois significatif et en même temps facile à écrire. Ce choix de nom s’apparente aux bonnes pratiques de codages que nous avions déjà décrites dans un <a href="http://adv-r.had.co.nz/">précédent article</a>.</p>

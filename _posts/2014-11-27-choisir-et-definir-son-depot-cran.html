@@ -1,0 +1,58 @@
+---
+layout: post
+title: Choisir et définir son dépot CRAN
+date: 2014-11-27 19:19:46.000000000 +01:00
+categories:
+- GNU R
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/11/Rlogo.jpg"><img src="assets/Rlogo.jpg" alt="Rlogo" width="100" height="76" class="alignleft size-full wp-image-294" /></a> L'une des forces de <a href="r-project.org">R</a> est son système de packages. Pour pouvoir télécharger ces packages, il faut au préalable définir un dépôt. Le réseau de dépôt le plus connu est le <a href="http://cran.r-project.org/">CRAN</a>. Il en existe d'autres (par exemple <a href="http://www.bioconductor.org/]">Bioconductor</a> dont je ne parlerai pas ici.</p>
+<p>Je décrirais dans ce billet comment choisir et définir à la main son dépôt CRAN.</p>
+<p><!--more--></p>
+<h2>Choix du dépôt</h2>
+<p>Le <em>Comprehensive R Archive Network</em> (CRAN) est un réseau de serveurs (<a href="https://fr.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a> et <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>) répartis dans le monde qui stockent des versions identiques et à jour de <em>R</em> et de ses <em>packages</em>.</p>
+<p>Il est indiqué d'utiliser le miroir le plus proche afin de minimiser la charge réseau. Pour ce faire</p>
+<ol>
+<li>Se rendre sur la page listant les dépôts : <a href="http://cran.r-project.org/mirrors.html">http://cran.r-project.org/mirrors.html</a> </li>
+<li>Trouver le pays où vous êtes actuellement localisé. Pour les frontaliers, peut-être voir avec les pays voisins.</li>
+<li>Trouver le serveur le plus proche et sélectionner son URL</li>
+</ol>
+<p>Dans mon cas il y a deux candidats, CARDSE qui est à Strasbourg et Paris I.</p>
+<p>Etapes optionnelle et certainement optionnelle : tester les serveurs, par exemple simplement sur leur <a href="https://fr.wikipedia.org/wiki/Ping_%28logiciel%29">ping</a> qui permet de connaître le temps de latence du serveur :</p>
+<pre><code>ping -c 5 cran.cardse.net
+ping -c 5 cran.univ-paris1.fr
+</code></pre>
+<p>Pour tester le débit, on peut télécharger un gros package et observer le débit moyen.</p>
+<pre><code>wget http://cran.cardse.net/src/contrib/ggplot2_1.0.0.tar.gz 
+wget http://cran.univ-paris1.fr/src/contrib/ggplot2_1.0.0.tar.gz 
+rm ggplot2_1.0.0.tar.gz*
+</code></pre>
+<p>Dans mon cas c'est <code>http://cran.cardse.net</code> le candidat idéal.</p>
+<h2>Définir le dépôt</h2>
+<p>Il est possible de définir le dépôt à l'aide du GUI de R. Autre possibilité pour ceux qui n'utilisent pas le GUI : le configurer dans le fichier <code>~/.Rprofile</code>.</p>
+<p>Pour ouvrir ce fichier, taper dans le terminal</p>
+<pre><code>vim ~/.Rprofile
+</code></pre>
+<p>Puis ajouter</p>
+<pre><code># Set the repositories
+
+local({r &lt;-getOption("repos")
+       r["CRAN"] &lt;- "http://cran.cardse.net/"
+       options(repos = r)
+ })
+</code></pre>
+<p>en remplaçant <code>http://cran.cardse.net/</code> par l'URL du dépot que vous avez sélectionné.</p>
+<p>Enfin, enregistrez le tout et testez en lançant R.</p>
+<pre><code>install.packages("dfexplore")
+</code></pre>

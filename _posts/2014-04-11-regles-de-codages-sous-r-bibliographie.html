@@ -1,0 +1,56 @@
+---
+layout: post
+title: Règles de codages sous R - Bibliographie
+date: 2014-04-11 16:49:53.000000000 +02:00
+categories:
+- Bonnes pratiques
+- GNU R
+- Programmation
+tags:
+- Coding Style
+- Français
+- GNU R
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>La programmation sous R est très accessible car interactive et peu contraignante, que ce soit dans le fond (typage dynamique) ou dans la forme (pas d'indentation obligatoire comme dans Python). Ceci amène à une qualité de code très hétérogène en fonction des utilisateurs, en particulier sous sa forme, ce qui impact beaucoup sur sa lisibilité.</p>
+<p><!--more--></p>
+<p>Or un utilisateur de R passera plus de temps à relire son code qu'à l'écrire. De plus, il est courant de transmettre du code d'une personne à une autre dans une équipe. La lisibilité du code est donc cruciale. Dans cet article, je vais présenter une bibliographie touchant à ce problème de style de codage dans R. L'objectif plus général est de pouvoir écrire un "R Coding Style" adapté à l'activité de mon service.</p>
+<h2>Méthode</h2>
+<p>Plusieurs recherches ont été menées :</p>
+<ul>
+<li>recherche dans le moteur de recherche "Google" avec les mots clefs <a href="https://www.google.fr/search?q=R+Coding+style" target="_blank">"R coding style"</a> en ne gardant que les réponses pertinente de la première page de résultats.</li>
+<li>Suivi systématique des références proposées dans les documents trouvés.</li>
+<li>Recherche de la documentation sur des règles de codage générales indépendament du language a été recherché à l'aide de "Coding style" dans Google et Wikipedia.</li>
+<li>Recherche  en Français sur Google avec les mots clefs "Règles de Codage R". Une sélection de documents a été retenu et rapidement décrite afin d'être utiliser comme base de travail pour le développement de notre propre règle de codage. </li>
+</ul>
+<h2>Résultats</h2>
+<h3>R, Bonnes pratiques Document</h3>
+<p><a href="http://cran.r-project.org/doc/contrib/Genolini-RBonnesPratiques.pdf">PDF en Français</a> de 19 pages proposé sur le site du CRAN. A la fois didactique et pratique. Excellente base de travail.</p>
+<h3>R Style. An Rchaeological Commentary Document</h3>
+<p><a href="http://cran.r-project.org/web/packages/rockchalk/vignettes/Rstyle.pdf" target="_blank">PDF de 12 pages librement accessible</a> sur le CRAN. Il donne des élements de réflexion et des élements pratiques. Bon point de départ en Anglais.</p>
+<h3>Google's R Style Guide</h3>
+<p><a href="https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#curlybraces" target="_blank">Page web</a>. A la fois complet et concis.</p>
+<h3>Wikipedia</h3>
+<p>Permet d'avoir d'avoir des notions générale sur les règles de codage en <a href="http://fr.wikipedia.org/wiki/R%C3%A8gles_de_codage">Français</a> et en <a href="http://en.wikipedia.org/wiki/Coding_style">Anglais</a>.</p>
+<h3>PEP8</h3>
+<p>Le <a href="http://legacy.python.org/dev/peps/pep-0008/" target="_blank">style de codage de Python</a>.</p>
+<h3>R Coding Conventions</h3>
+<p><a href="http://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CEUQFjAB&url=http%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Frockchalk%2Fvignettes%2FRstyle.pdf&ei=XPpHU73DDKzY0QXMo4HIDg&usg=AFQjCNE2BVM0Jq-KkNEsS9TQcdGF9vwX_A&sig2=6zhAgs6P9tsQo77hMkvRNQ" target="_blank">Document collaboratif sur Google Docs</a> en cours de création. Permet d'avoir des choses très précises.</p>
+<h3>Autres</h3>
+<ul>
+<li><a href="http://hadley.github.io/stat405/r-style-guide.html" target="_blank">Hadley Wickam</a></li>
+<li><a href="http://4dpiecharts.com/r-code-style-guide/" target="_blank">4dpiecharts</a></li>
+<li><a href="http://csgillespie.wordpress.com/2010/11/23/r-style-guide/" target="_blank">Style pour les étudiants</a></li>
+</ul>
+<h2>Conclusion</h2>
+<p>Il existe déjà une abondante documentation sur les règles de codage en R. Cependant, il n'existe pas de consensus sur l’ensemble des règles de codage et la complexité de certaines règles ne sont pas applicables dans le cadre de mon service. Une règle de codage pour R spécifique pour mon service devra donc être décrite.</p>

@@ -1,0 +1,146 @@
+---
+layout: post
+title: Un nom pour le prochain package
+date: 2014-06-23 08:20:52.000000000 +02:00
+categories:
+- GNU R
+- Package R
+tags:
+- GNU R
+- nom package
+- package
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>Dans un <a href="http://jomuller.fr/?p=89">précédent billet</a>, je considérai que trouver un bon nom pour un package R était important et faisait partie de l’ergonomie du logiciel. Dans ce billet, je vais appliquer ceci à la recherche d’un nom pour mon prochain package. Ce package a comme objectif de créer des scripts permettant l’import rigoureux de variables à partir d’un cahier de variable dans le cadre d’une consultation méthodologique. Expliqué comme ceci en une phrase, ça ne doit pas sembler très clair. Raison de plus pour que le nom aide à sa compréhension!</p>
+<p><!--more--></p>
+<h2>À quoi sert ce package ?</h2>
+<p>Pour trouver un nom adéquat, il faut d’abord être au clair avec l’objectif principal du package et tenter d’en définir les limites. Pour ma part, j’en arrive à cette phase qu’une fois le package bien avancé et déjà en partie documenté. Un peu comme lorsque l’on écrit un article et l’on choisit un titre à la fin, je crois qu’il faut choisir le nom du package que juste avant sa publication.</p>
+<p>Dans le cas de mon package, il sert à créer des scripts R à partir de définition de variables. L’idée centrale est d’être très explicite dans la description des variables afin d’éviter des erreurs d’analyses par la suite. Par exemple une variable définissant l’évènement décès d’un patient est une variable catégorielle à deux modalités <em>Vivant</em> ou <em>Décédé</em>. Elle peut être codée de manière variée selon la base de données : parfois <em>v</em> et <em>d</em>, ou <em>d</em> et <em>a</em> (dead or alive) ce qui est relativement explicite, mais parfois <em>0</em> et <em>1</em>, ou <em>1</em> et <em>2</em> ce qui l’est beaucoup moins. L’idée est de définir dans un cahier de variable les caractéristiques de cette variable. Elle serait dans ce cas :</p>
+<ul>
+<li>Nom de la variable dans R : <em>death</em></li>
+<li>Étiquette de la variable : <em>Statut vital</em></li>
+<li>Description : <em>Statut vital du patient au moment du suivi</em></li>
+<li>Type : <em>Catégorielle</em></li>
+<li>Modalités : <em>0</em> = <em>mort</em>, <em>1</em> = <em>vivant</em></li>
+<li>Commentaire : <em>les données manquantes (“NA”) existent lorsque le statut vital n’a pas pu être vérifié. Ces cas doivent être écartés de l’analyse</em></li>
+</ul>
+<p>En ayant ceci, je n’ai pas de doute sur la manière d’utiliser la variable. Je ne risque pas de perdre des heures à me lancer dans une analyse de survie en croyant que <em>1</em> = <em>mort</em> et en arrivant à des conclusions me laissant imaginer que je vais pouvoir faire un <em>Lancet</em>. Je comprends également tout de suite comment je vais devoir traiter les données manquantes pour cette variable. Enfin, l’étiquette va me permettre de créer proprement mes légendes sur mes tableaux et graphiques.</p>
+<p>Pour importer toutes ces informations dans R, pour une variable, ça irait assez vite.</p>
+<pre><code>death &lt;- factor(death, levels = c(0, 1), labels = c(“mort”, “vivant”))
+</code></pre>
+<p>Cependant, une base de données contient rarement une seule variable. Dans ma pratique, elles en contiennent plutôt quelques dizaines (souvent plus de cinquante), avec des noms assez peu explicites. L’idée initiale est donc de remplir un <em>cahier de variable</em> avec la personne qui me remet la base de données. Ce cahier de variable est un simple fichier tabulé (.csv, .odt ou .xlsx) contenant les colonnes suivantes :</p>
+<ul>
+<li><strong>Nom de la variable dans R</strong> : C’est le nom que je vais définir à utiliser dans R. Il suit les bonnes pratiques, à savoir il est raisonnablement court, explicite et ne contient que des caractères autorisés.</li>
+<li><strong>Étiquette de la variable</strong> : C’est ce qui apparaitra dans les graphiques et tableaux du rapport final. Il est défini par la personne qui me consulte et correspond souvent au nom initial de ses variables dans sa base de données.</li>
+<li><strong>Description</strong> : Une courte description de la variable qui pourra apparaitre dans le rapport final, permettant de comprendre la variable, son contexte.</li>
+<li><strong>Type</strong> : Le type de variable, quantitative (numérique ou entier), catégorielle (non ordonnée ou ordonnée), date, chaine de caractère</li>
+<li><strong>Unité</strong> : utilisé pour construire les légendes. Pour les dates, donne le format de date (par exemple %d/%m/%Y pour 10/06/2014)</li>
+<li><strong>Modalités</strong> : Définition des couples de <em>clef</em> (ou <em>level</em>) avec un <em>nom de modalité</em> (ou <em>label</em>).</li>
+<li><strong>Commentaire</strong> : Un commentaire pouvant guider l’analyse. Ne sera pas repris dans le rapport.</li>
+</ul>
+<p>À partir de ce cahier de variable, j’ai l’habitude de revoir variable par variable l’importation dans R, afin de m’assurer que tout soit rigoureusement importé afin de gagner du temps par la suite. Je recode les catégorielles, fait toujours un petit summary pour chaque variable, ainsi qu’une petite représentation graphique pour voir les distributions. Souvent, je remets un fichier généré à partir du .Rmd sous la forme d’un HTML à la personne qui me consulte afin qu’il que le processus d’importation soit traçable et reproductible.</p>
+<p>J’ai donc créé de petits scripts permettant de générer rapidement des squelettes de scripts en fonction du type de variable. J’ai étendu ces scripts sous forme de package.</p>
+<p>Ceci donne actuellement pour une variable :</p>
+<pre><code>library(easydm)
+
+# Créer une variable
+vardeath &lt;- Descvar(
+       rname = "death", 
+       varlabel = "État vital", 
+       type = "factor", 
+       comment = "Statut vital du patient au moment du suivi", 
+       levels = 0:1, 
+       names = c("mort", "vivant")
+  )
+vardeath
+# rname = death 
+# varlabel = État vital 
+# type = factor 
+# comment = Statut vital du patient au moment du suivi 
+# levels = 0, 1 
+# names = mort, vivant 
+# Créer une sortie 
+create_dm(vardeath, template = import_template())
+
+# #- Start of the script in R -#
+# ######### Datamanagement script ##########
+# # import data
+# 
+# rep_rawdata &lt;- read.csv( "rep_path_to_database", stringsAsFactors =F)
+# 
+# # Change headers
+# variables_df &lt;- read.csv( "rep_path_to_database")
+# names(rep_rawdata) &lt;- variables_df$var_name
+# 
+# # Make a copy
+# rep_cleandata &lt;- rep_rawdata
+# 
+# ####### Clean the variable death #####
+# 
+# # explore the raw data
+# head(raw_data$death)
+# str(raw_data$death)
+# 
+# # Set it as a factor
+# clean_data$death &lt;- factor(
+#   x = raw_data$death,
+#   levels = c('0', '1'),
+#   labels = c('mort', 'vivant'),
+#   ordered = FALSE
+# )
+# # set the label
+# attr(clean_data$death, "label") &lt;- "État vital"
+# 
+# head(clean_data$death)
+# str(clean_data$death)
+# summary(clean_data$death)
+# 
+# # number of NA
+# 
+# sum(is.na(clean_data$death))
+# # Make a plot
+# plot(clean_data$death)
+# ##### watch all ######
+# 
+# str(rep_cleandata)
+# 
+# ####### Save the cleaned data ######
+# save(rep_cleandata, file="produced_data/clean_data.Rdata"
+#      #- End of the script in R -#
+</code></pre>
+<p>Et l’on peut faire la même chose à partir d’un cahier de variable complet que l’on importe avec la fonction <em>import_vardef()</em>.</p>
+<h2>Quel nom ?</h2>
+<p>Pour l’instant mon package se nomme <em>easydm</em> pour <em>easy datamanagement</em>. Mais comme me l’a fait remarquer un de mes enseignants, ceci n’est pas du datamagement. Il s’agit plus de créer des squelettes de scripts à partir de définition de variable. Voici mes quelques recherches de noms :</p>
+<ul>
+<li>importr</li>
+<li>variable to script
+<ul>
+<li>vartoscript</li>
+<li>vtos</li>
+<li>vartos</li>
+<li>vartors</li>
+<li>vardeftors</li>
+</ul>
+</li>
+<li>description to script
+<ul>
+<li>desctor</li>
+<li>descscript</li>
+</ul>
+</li>
+<li>description to program</li>
+<li>program template</li>
+<li>fast import script skeleton</li>
+<li>importskeleton</li>
+</ul>
+<p>Au final, je retiens <em>vartors</em> qui peut se titrer <em>Variable definition To R Script skeleton</em>. Il suit les règles de nommage d’un package et n’est pas encore utilisé sur le CRAN. De plus, c’est un mot-clé qui ne semble pas encore beaucoup utilisé lorsque l’on cherche sur Google donc il sera facilement trouvable.</p>

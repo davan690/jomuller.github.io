@@ -1,0 +1,26 @@
+---
+layout: post
+title: aRt
+date: 2014-08-11 08:24:22.000000000 +02:00
+categories:
+- GNU R
+tags:
+- ggplot2
+- graphiques
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>J'utilise presque exclusivement <a href="http://docs.ggplot2.org/current">ggplot2</a> pour mes graphiques. J'apprécie beaucoup la souplesse qu'il procure. Cependant je me perds régulièrement dans les options et il m'arrive souvent d'avoir des résultats assez étonnants. Le dernier en date (ci-dessous) est assez psychédélique.</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/08/densityplot.png"><img src="assets/densityplot-300x225.png" alt="densityplot" width="300" height="225" class="alignnone size-medium wp-image-182" /></a></p>
+<p>Ce devait être à l'origine un simple histogramme dont le code était</p>
+<p><code>ggplot(clean_data) + aes(x = mois, fill = poludom) + geom_bar()</code></p>
+<p>Mais lors d'un copié-collé un peu hâtif, j'ai remplacé le <code>geom_bar</code> par un <code>geom_density</code>.</p>

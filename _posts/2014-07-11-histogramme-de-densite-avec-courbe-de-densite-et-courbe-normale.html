@@ -1,0 +1,38 @@
+---
+layout: post
+title: Histogramme de densité avec courbe de densité et courbe normale
+date: 2014-07-11 14:44:52.000000000 +02:00
+categories:
+- Cookbook
+- GNU R
+tags:
+- ggplot2
+- GNU R
+- graphiques
+- histogramme
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>Pour les variables qualitatives, il est utile de représenter leurs valeurs sur un histogramme. Une courbe de densité permet également d'apprécier la normalité. Et pour la comparer à une courbe de densité normale, il est utile la représenter en utilisant la moyenne et l'écart type de l'échantillon.</p>
+<p>Pour créer ce graphique complexe mais utile sous ggplot2,</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2014/07/Densite-normale.png"><img src="assets/Densite-normale-300x287.png" alt="Densite normale" width="300" height="287" class="alignnone size-medium wp-image-142" /></a></p>
+<p>une <a href="http://stackoverflow.com/a/6967799/2007150">réponse sur StackOverflow</a> propose propose d'utiliser la commande suivante. La variable age est un simple vecteur numérique :</p>
+<pre><code>qplot(age, geom = "blank") + 
+geom_histogram(aes(y = ..density..),  binwidth=1) +
+stat_density(geom = "line", size=2, alpha = 0.5, aes(colour = "bla")) + 
+stat_function(fun=dnorm, size=2, alpha = 0.5, aes(x = age, colour = "blabla"), args=list(mean = mean(age) ,
+                          sd =  sd(age))) + 
+scale_colour_manual(name = "", values = c("blue", "green"), 
+                               breaks = c("bla", "blabla"), 
+                               labels = c("Estimation de la densité", "courbe normale")) + 
+theme(legend.position = "bottom", legend.direction = "horizontal")
+</code></pre>

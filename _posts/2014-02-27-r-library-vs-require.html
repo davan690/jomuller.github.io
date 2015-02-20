@@ -1,0 +1,175 @@
+---
+layout: post
+title: 'R : library() vs require()'
+date: 2014-02-27 19:29:20.000000000 +01:00
+categories:
+- GNU R
+- Programmation
+tags:
+- GNU R
+- package
+- Programmation
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p>L’une des grandes forces du <a href="http://cran.r-project.org/">langage R</a> est d’être facilement extensible à l’aide d’un système de packages faciles à gérer tant pour l’utilisateur que pour le développeur. Pour charger en mémoire un package, il est habituel d’utiliser la fonction <code>library()</code>. Par exemple pour pouvoir utiliser le package <em>dfexplore</em> il suffit de taper :</p>
+<pre>package(dfexplore)</pre>
+<p>Cependant, une autre fonction, <code>require()</code>, semble remplir la même mission.</p>
+<pre>require(dfexplore)</pre>
+<p><!--more--></p>
+<h2>Objectif</h2>
+<p>Quelle est la différence entre les fonctions <code>library()</code> et <code>require()</code>?</p>
+<h2>Réponse courte</h2>
+<p>D’après <a href="http://abcdr.guyader.pro/2922-quelle-est-la-difference-entre-library-et-require/">abcdr.guyader.pro</a></p>
+<blockquote>
+<p>il n’y en a pas… ou si peu […] <strong>require</strong> est a utiliser dans le corps d‘une <strong>fonction</strong>, qui affichera un <strong>message d’erreur</strong> si le package n’existe pas mais continuera son execution</p>
+</blockquote>
+<p>Point de vue qui est partagé sur <a href="http://stackoverflow.com/questions/5595512/what-is-the-difference-between-require-and-library">StackOverflow</a>.</p>
+<h2>Documentation</h2>
+<p>Ces deux fonctions partagent la <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/library.html">même page de documentation</a>. En la lisant, on remarque que les deux fonctions ne partagent pas les mêmes arguments.</p>
+<table border="0" cellspacing="0">
+<colgroup span="3" width="121"></colgroup>
+<tbody>
+<tr>
+<td align="left" height="23">
+        Argument
+      </td>
+<td align="left">
+        library()
+      </td>
+<td align="left">
+        require()
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        package
+      </td>
+<td align="left">
+        X
+      </td>
+<td align="left">
+        X
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        <strong>help</strong>
+      </td>
+<td align="left">
+        X
+      </td>
+<td align="left">
+         
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        <strong>pos</strong>
+      </td>
+<td align="right">
+        2
+      </td>
+<td align="left">
+         
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        lib.loc
+      </td>
+<td align="left">
+        NULL
+      </td>
+<td align="left">
+        NULL
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        character.only
+      </td>
+<td align="left">
+        FALSE
+      </td>
+<td align="left">
+        FALSE
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        <strong>logical.return</strong>
+      </td>
+<td align="left">
+        FALSE
+      </td>
+<td align="left">
+         
+      </td>
+</tr>
+<tr>
+<td align="left" height="23">
+        warn.conflicts
+      </td>
+<td align="left">
+        TRUE
+      </td>
+<td align="left">
+        TRUE
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        quietly
+      </td>
+<td align="left">
+        FALSE
+      </td>
+<td align="left">
+        FALSE
+      </td>
+</tr>
+<tr>
+<td align="left" height="24">
+        <strong>verbose</strong>
+      </td>
+<td align="left">
+        getOption("verbose"))
+      </td>
+<td align="left">
+         
+      </td>
+</tr>
+</tbody>
+</table>
+<p> 4 arguments sont en plus dans library :</p>
+<ul>
+<li><em>help</em> : permets d’afficher l’aide d’un package (ou au moins sa description) sans le charger ;</li>
+<li><em>pos</em> : position dans la liste de recherche ;</li>
+<li><em>logical.return</em> : retourne TRUE ou FALSE selon que le package soit correctement chargé. Avec cette option activée, <code>library()</code> s’approche de <code>require()</code> mais le premier retourne toujours une erreur alors que le second ne retourne qu’un warning;</li>
+<li><em>verbose</em> : pour des informations supplémentaires.</li>
+</ul>
+<p><code>require()</code> présente un avantage lors de la création de package, est qu'il retourne un booléen indiquant si le package a été bien chargé ou non. Il peut être donc utilisé de la manière suivante :</p>
+<pre><code># Si le package ne peut être chargé, l'installer
+if (!require(dfexplore)) {
+
+  #Installer le package
+  install.packages("dfexplore")
+
+  # Le charger. Arrête le script si chargement impossible.
+  library(dfexplore)
+}
+</code></pre>
+<h2>Conclusion</h2>
+<p>La réponse courte est satisfaisante. Utiliser <code>library()</code> lors d’écriture de scripts simples et <code>require()</code> dans les fonctions, car ce dernier retourne un booléen permettant de vérifier si le package a bien été chargé.</p>
+<h2>Mise à jour</h2>
+<p>Yihui Xie vient d'écrire <a href="http://yihui.name/en/2014/07/library-vs-require/">un billet à ce sujet</a>.</p>

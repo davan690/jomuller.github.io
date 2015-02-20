@@ -1,0 +1,29 @@
+---
+layout: post
+title: Copier une sélection avec iTerm + Tmux
+date: 2015-01-06 12:11:17.000000000 +01:00
+categories:
+- iTerm2
+- Mac OS
+- tmux
+tags:
+- Copier
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+author:
+  login: jomuller
+  email: joris.muller@free.fr
+  display_name: jomuller
+  first_name: Joris
+  last_name: Muller
+---
+<p><a href="http://jomuller.fr/wp-content/uploads/2015/01/iterm21.png"><img src="assets/iterm21.png" alt="iterm2" width="122" height="105" class="alignleft size-full wp-image-391" /></a> J'utilise quotidiennement <a href="http://iterm2.com/">iTerm2</a> et <a href="http://tmux.sourceforge.net/">tmux</a>. <strong>Copier-Coller</strong> n'est pas aussi simple que d'habitude avec cette configuration. Par exemple avec une console de <a href="http://www.r-project.org/">R</a> ouverte, <strong>impossible de sélectionner un texte simplement avec la souris</strong>, car le curseur est automatiquement remis au niveau de la zone de saisie.</p>
+<p>iTerm2 permet de sélectionner pour copier du texte en utilisant la touche <kbd>alt</kbd> + sélection à la souris.</p>
+<p><!--more--></p>
+<p>Le problème de cette solution est quelle sélectionne toute la ligne. Lorsque l'on a un écran divisé verticalement comme dans l'image ci dessous, on copie à la fois ce qu'il a sur le panneau de gauche et celui de droite.</p>
+<p><a href="http://jomuller.fr/wp-content/uploads/2015/01/vimr_copie.png"><img src="assets/vimr_copie-300x227.png" alt="vimr_copie" width="300" height="227" class="aligncenter size-medium wp-image-388" /></a></p>
+<p>Il est alors possible de faire des sélection d'un rectangle avec la combinaison <kbd>alt</kbd> + <kbd>cmd</kbd> + sélection à la souris.</p>
+<p>Solution trouvée sur <a href="http://stackoverflow.com/questions/12287432/how-to-copy-to-system-clipboard-from-tmux-output-after-mouse-selection">StackOverflow</a>.</p>

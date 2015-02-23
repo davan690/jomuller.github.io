@@ -9,7 +9,7 @@ This is my first post with Jekyll. I'm not sure I will use this blogging system 
 
 Just a test with some R code
 
-{% highlight r %}
+{% highlight s %}
 library(vartors)
 
 for (one in may) {

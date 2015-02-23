@@ -9,7 +9,7 @@ This is my first post with Jekyll. I'm not sure I will use this blogging system 
 
 Just a test with some R code
 
-```s
+{% highlight r %}
 library(vartors)
 
 for (one in may) {
@@ -17,6 +17,6 @@ for (one in may) {
 }
 
 summary(a)
-```
+{% endhighlight %}
 
 That's all for today!

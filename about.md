@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-This is another blog about data science. I'm not sure this place could be useful to someone but at least it help me to formalize some ideas. I'm a Medical Resident in Public Health and my goal is to become a proficient data sientist in this field.
+This is another blog about data science. I'm not sure this place could be useful to someone but at least it help me to formalize some ideas. I'm a Medical Resident in Public Health and my goal is to become a proficient data scientist in this field.
 
 You can contact me by email at jomuller AT jom DOT link.
 

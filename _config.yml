@@ -9,4 +9,5 @@ github_username:  jomuller
 
 permalink:    /:year/:month/:day/:title.html
 # Build settings
-markdown: kramdown
+markdown: redcarpet
+extensions: [fenced_code_blocks]

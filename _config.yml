@@ -11,3 +11,4 @@ permalink:    /:year/:month/:day/:title.html
 # Build settings
 markdown: redcarpet
 extensions: [fenced_code_blocks]
+highlighter: pygments

@@ -9,14 +9,14 @@ This is my first post with Jekyll. I'm not sure I will use this blogging system 
 
 Just a test with some R code
 
-```s
+```r
 library(vartors)
 
 for (one in may) {
     do_something
 }
 
-summary(a)
+summary(x = a)
 ```
 
 That's all for today!

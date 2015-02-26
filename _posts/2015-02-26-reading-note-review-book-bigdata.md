@@ -19,4 +19,4 @@ The second book, "Data-ism" is more about commercial usage of big data. Key idea
 
 Last one, "Data and Goliath", appear to be more political and social.
 
-I'm not sure I will read one of these books, but it's interesting to know that there is an intensive work around this term.
+I'm not sure I will read one of these books because none of them are about Big Data in health, but it's interesting to know that there is an intensive work around this term.

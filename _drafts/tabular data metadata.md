@@ -17,7 +17,7 @@ age | study | childs
 4   | 2     | 2
 3   |       | 9
 
-It tried to find a solution with the package _vartors_. It works but the theorical part is weak. The main leak I think is the vocabulary. I will discuss here about the concept of __metadata__
+It tried to find a solution with the package _vartors_. It works but the theorical part is weak. The main leak I think is the vocabulary. I will discuss here about the concept of [__metadata__](http://en.wikipedia.org/wiki/Metadata).
 
 ## Metadata
 

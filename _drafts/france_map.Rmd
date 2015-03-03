@@ -1,0 +1,137 @@
+---
+layout: post
+title:  "Chlorodelph map of France"
+date: 2015-03-03 
+categories: R data_science
+---
+
+The aim of this post is to create a simple but nice chlordelph map with R of the French population to the administrative "department" level.
+
+## Gather Data
+
+I will use data from the [French institute of Statistics (INSEE)](http://insee.fr). We will use the [file about the population by deparment](http://insee.fr/fr/ppp/bases-de-donnees/donnees-detaillees/estim-pop/estim-pop-dep-sexe-gca-1975-2014.xls). 
+
+```{r}
+# Download the raw XLS file
+raw_xls <- file.path(tempdir(), "pop_french.xls")
+download.file(
+    url = "http://insee.fr/fr/ppp/bases-de-donnees/donnees-detaillees/estim-pop/estim-pop-dep-sexe-gca-1975-2014.xls", 
+    destfile = raw_xls, 
+    method = "wget"
+    )
+
+
+```
+
+The file is a ugly XLS, then we will use the package _xlsx_ to open it.
+
+```{r}
+library(xlsx)
+# Data of 2014 are on sheet one
+raw_db <- read.xlsx(
+    file = raw_xls, 
+    sheetIndex = 2, 
+    header = FALSE, 
+    colClasses = "character"
+    )
+dim(raw_db)
+```
+
+```{r}
+kable(head(raw_db[, 1:10]))
+```
+
+```{r}
+kable(tail(raw_db[, 1:10]))
+```
+It's really an ugly tabular data because header are not on the first line and data after. Then we will need to clean it.
+
+We only need 3 columns :
+
+- _1_: Department's number
+- _2_: Department's name
+- _8_: Total Population
+
+Data start at line 6 and end at line 106.
+
+```{r}
+clean_data <- raw_db[6:106, c(1,2,8)]
+```
+
+```{r}
+kable(tail(clean_data))
+```
+
+Line 102 is just a sum
+
+```{r}
+clean_data <- clean_data[complete.cases(clean_data),]
+```
+
+Do a better table
+
+```{r}
+db <- data.frame(
+    dept = as.character(clean_data$X1),
+    pop = as.integer(as.character(clean_data$X8)),
+    row.names = clean_data$X2,
+    stringsAsFactors = FALSE
+    )
+
+```
+
+Finaly we have a clean data frame
+
+```{r}
+kable(db)
+```
+
+## Find a map of France
+
+```{r}
+library(sp)
+library(rgdal)
+library(rgeos)
+library(mapproj)
+library(maptools)
+library(raster)
+```
+
+According to this [post](http://web.stanford.edu/~cengel/cgi-bin/anthrospace/download-global-administrative-areas-as-rdata-files), maps can be downloaded from [Global Administrative Areas (GADM)](http://gadm.org).
+
+```{r}
+con <- url("http://biogeo.ucdavis.edu/data/gadm2/R/FRA_adm2.RData")
+print(load(con))
+close(con)
+
+plot(gadm)
+```
+
+With this I can plot just the map. Now we have to put together the data from the map and data about population
+
+```{r}
+str(gadm, max.level = 2)
+
+head(gadm@data)
+```
+
+```{r}
+gadm$regions <- as.factor(gadm@data$NAME_1)
+colorss <- rainbow(length(levels(gadm$regions)))
+spplot(gadm, "regions", col.regions = colorss)
+```
+
+Now, do the same but with popultation
+
+```{r}
+dbs <- merge(gadm@data, db, by.x = "ID_2", by.y = "dept", all.x = TRUE, all.y = FALSE)
+# Discretize
+
+gadm$pop <- cut(x = dbs$pop, breaks = 6)
+color_pop <- heat.colors(6)
+
+spplot(gadm, "pop", col.regions = color_pop)
+```
+
+Not bad but there is some department missing.
+

@@ -11,7 +11,7 @@ author: Joris Muller
 
 [Nature published a short review](http://www.nature.com/nature/journal/v518/n7540/full/518480a.html) of three new books about Big Data. This review reminds us that we use the term of Big Data since more than two decades but its usage increase dramatically since only five years.
 
-![First page of the article](/assets/nature_bigdata.jpg)
+<img src="/assets/nature_bigdata.jpg" title="First page of the article" alt="First page of the article" style="display: block; margin: auto;" />
 
 One key idea in this article is that Big Data is possible for every aspect of our life we can digitalize in a proper way and well indexed.
 

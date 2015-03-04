@@ -32,11 +32,8 @@ download.file(
 ```
 
 
-```
-## NULL
-```
 
-The file is a ugly XLS, then we will use the package _xlsx_ to open it.
+The file is an ugly XLS, then we will use the package _xlsx_ to open it.
 
 
 ```r
@@ -48,13 +45,6 @@ raw_db <- read.xlsx(
     header = FALSE, 
     colClasses = "character"
     )
-```
-
-```
-## Error in .jcall("RJavaTools", "Ljava/lang/Object;", "invokeMethod", cl, : java.lang.IllegalArgumentException: Your InputStream was neither an OLE2 stream, nor an OOXML stream
-```
-
-```r
 dim(raw_db)
 ```
 
@@ -280,17 +270,9 @@ Finaly we have a clean data frame
 
 ## Find a map of France
 
-
-```r
-library(sp)
-```
-
 According to this [post](http://web.stanford.edu/~cengel/cgi-bin/anthrospace/download-global-administrative-areas-as-rdata-files), maps can be downloaded from [Global Administrative Areas (GADM)](http://gadm.org).
 
 
-```
-## NULL
-```
 
 
 ```r
@@ -322,7 +304,7 @@ library(sp)
 plot(gadm)
 ```
 
-<img src="/assets/france_map/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" />
+<img src="/assets/france_map/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" />
 
 ## Merge map data and pop data
 
@@ -345,20 +327,27 @@ str(gadm, max.level = 2)
 
 
 
-
 ```r
 gadm$regions <- as.factor(gadm@data$NAME_1)
 colorss <- rainbow(length(levels(gadm$regions)))
 spplot(gadm, "regions", col.regions = colorss)
 ```
 
-<img src="/assets/france_map/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
+<img src="/assets/france_map/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" />
 
 Now, do the same but with popultation
 
 
 ```r
-dbs <- merge(gadm@data, db, by.x = "ID_2", by.y = "dept", all.x = TRUE, all.y = FALSE)
+dbs <- merge(
+    x = gadm@data, 
+    y = db, 
+    by.x = "ID_2",
+    by.y = "dept", 
+    all.x = TRUE,
+    all.y = FALSE
+    )
+
 # Discretize
 
 gadm$pop <- cut(x = dbs$pop, breaks = 6)
@@ -367,7 +356,38 @@ color_pop <- heat.colors(6)
 spplot(gadm, "pop", col.regions = color_pop)
 ```
 
-<img src="/assets/france_map/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" />
+<img src="/assets/france_map/unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" />
 
-Not bad but there is some department missing.
+Not bad but there is some department missing. To reasons :
 
+
+1. The _id_ of the department in the INSEE data are with two digits and represented by _01_, _02_ ... Then we have to convert it in integer
+2. Corsica have _id_s in INSEE _2a_ and _2b_ but 96 and 97 in map data.
+
+
+```r
+# Change for Corsica
+db$dept[db$dept == "2a"] <- 96 
+db$dept[db$dept == "2b"] <- 97 
+db$dept <- as.integer(db$dept)
+
+# Redo previous step
+gadm$pop <- NULL
+dbs <- merge(
+    x = gadm@data, 
+    y = db, 
+    by.x = "ID_2",
+    by.y = "dept", 
+    all.x = TRUE,
+    all.y = FALSE
+    )
+
+# Discretize
+
+gadm$pop <- cut(x = dbs$pop, breaks = 6)
+color_pop <- rev(heat.colors(6))
+
+spplot(gadm, "pop", col.regions = color_pop)
+```
+
+<img src="/assets/france_map/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />

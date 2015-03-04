@@ -53,7 +53,7 @@ if( raw_xls %in% dir() ){
 }
 ```
 
-The file is a ugly XLS, then we will use the package _xlsx_ to open it.
+The file is an ugly XLS, then we will use the package _xlsx_ to open it.
 
 ```{r open_xls, cached = TRUE}
 library(xlsx)
@@ -108,13 +108,10 @@ Finaly we have a clean data frame
 ```{r, echo = FALSE}
 library(knitr)
 kable(db)
+save(db, file = "db.RData")
 ```
 
 ## Find a map of France
-
-```{r}
-library(sp)
-```
 
 According to this [post](http://web.stanford.edu/~cengel/cgi-bin/anthrospace/download-global-administrative-areas-as-rdata-files), maps can be downloaded from [Global Administrative Areas (GADM)](http://gadm.org).
 
@@ -161,9 +158,6 @@ Now we have to put together the data from the map and data about population
 str(gadm, max.level = 2)
 ```
 
-```{r}
-
-```
 
 ```{r}
 gadm$regions <- as.factor(gadm@data$NAME_1)
@@ -174,7 +168,15 @@ spplot(gadm, "regions", col.regions = colorss)
 Now, do the same but with popultation
 
 ```{r}
-dbs <- merge(gadm@data, db, by.x = "ID_2", by.y = "dept", all.x = TRUE, all.y = FALSE)
+dbs <- merge(
+    x = gadm@data, 
+    y = db, 
+    by.x = "ID_2",
+    by.y = "dept", 
+    all.x = TRUE,
+    all.y = FALSE
+    )
+
 # Discretize
 
 gadm$pop <- cut(x = dbs$pop, breaks = 6)
@@ -183,5 +185,34 @@ color_pop <- heat.colors(6)
 spplot(gadm, "pop", col.regions = color_pop)
 ```
 
-Not bad but there is some department missing.
+Not bad but there is some department missing. To reasons :
 
+
+1. The _id_ of the department in the INSEE data are with two digits and represented by _01_, _02_ ... Then we have to convert it in integer
+2. Corsica have _id_s in INSEE _2a_ and _2b_ but 96 and 97 in map data.
+
+```{r}
+# Change for Corsica
+db$dept[db$dept == "2a"] <- 96 
+db$dept[db$dept == "2b"] <- 97 
+db$dept <- as.integer(db$dept)
+
+# Redo previous step
+gadm$pop <- NULL
+dbs <- merge(
+    x = gadm@data, 
+    y = db, 
+    by.x = "ID_2",
+    by.y = "dept", 
+    all.x = TRUE,
+    all.y = FALSE
+    )
+
+# Discretize
+
+gadm$pop <- cut(x = dbs$pop, breaks = 6)
+color_pop <- rev(heat.colors(6))
+
+spplot(gadm, "pop", col.regions = color_pop)
+
+```

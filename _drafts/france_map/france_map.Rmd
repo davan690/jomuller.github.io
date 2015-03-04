@@ -40,7 +40,7 @@ download.file(
     )
 ```
 
-```{r download_insee, echo = FALSE}
+```{r download_insee, results='hide', echo = FALSE}
 raw_xls <- "pop_french.xls"
 if( raw_xls %in% dir() ){
     # do nothing
@@ -118,7 +118,7 @@ library(sp)
 
 According to this [post](http://web.stanford.edu/~cengel/cgi-bin/anthrospace/download-global-administrative-areas-as-rdata-files), maps can be downloaded from [Global Administrative Areas (GADM)](http://gadm.org).
 
-```{r download_map, echo = FALSE}
+```{r download_map, echo = FALSE, results='hide'}
 con <- "FRA_adm2.RData"
 if (con %in% dir()) {
 # do nothing

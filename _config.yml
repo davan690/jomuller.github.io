@@ -7,7 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://blog.jom.link" 
 github_username:  jomuller
 
-permalink:    /:year/:month/:day/:title.html
+permalink:    /:title.html
 # Build settings
 markdown: redcarpet
 redcarpet:

@@ -1,11 +1,20 @@
 ---
 layout: post
-title:  "Chlorodelph map of France"
+pusblished: true
+title:  "Chloropleth map of France"
 date: 2015-03-03 
-categories: R data_science
+categories: 
+    - R 
+    - Data science
+    - Geographical data
+    - Graphical representation 
 ---
 
-The aim of this post is to create a simple but nice chlordelph map with R of the French population to the administrative "department" level.
+
+
+A popular way to represent data on a map is the [cloropleth map](http://en.wikipedia.org/wiki/Choropleth_map). It's possible to produce this kind of map with [_R_](http://www.r-project.org/) but I never took the time to achieve it. I'm actually working on some report system and I have to represent geographical data about France. One constraint is I have to produce a printable and grey tones map, ready to be pusblished. Furthermore, the cloropleth map must use a french specific territorial unit: the [department](http://en.wikipedia.org/wiki/Department_%28country_subdivision%29).
+
+The aim of this post is to create a simple but nice chloropleth map with R of the French population to the administrative department level.
 
 ## Gather Data
 
@@ -22,6 +31,11 @@ download.file(
     )
 ```
 
+
+```
+## NULL
+```
+
 The file is a ugly XLS, then we will use the package _xlsx_ to open it.
 
 
@@ -34,6 +48,13 @@ raw_db <- read.xlsx(
     header = FALSE, 
     colClasses = "character"
     )
+```
+
+```
+## Error in .jcall("RJavaTools", "Ljava/lang/Object;", "invokeMethod", cl, : java.lang.IllegalArgumentException: Your InputStream was neither an OLE2 stream, nor an OOXML stream
+```
+
+```r
 dim(raw_db)
 ```
 
@@ -41,37 +62,62 @@ dim(raw_db)
 ## [1] 110  20
 ```
 
-
 ```r
-kable(head(raw_db[, 1:10]))
+head(raw_db[, 1:10])
 ```
 
-
-
-|X1                                                                                    |X2  |X3         |X4          |X5          |X6          |X7             |X8     |X9         |X10         |
-|:-------------------------------------------------------------------------------------|:---|:----------|:-----------|:-----------|:-----------|:--------------|:------|:----------|:-----------|
-|Estimation de population au 1er janvier, par département, sexe et grande classe d'âge |NA  |NA         |NA          |NA          |NA          |NA             |NA     |NA         |NA          |
-|Année 2014                                                                            |NA  |NA         |NA          |NA          |NA          |NA             |NA     |NA         |NA          |
-|NA                                                                                    |NA  |NA         |NA          |NA          |NA          |NA             |NA     |NA         |NA          |
-|Départements                                                                          |NA  |Ensemble   |NA          |NA          |NA          |NA             |NA     |Hommes     |NA          |
-|NA                                                                                    |NA  |0 à 19 ans |20 à 39 ans |40 à 59 ans |60 à 74 ans |75 ans et plus |Total  |0 à 19 ans |20 à 39 ans |
-|01                                                                                    |Ain |165152     |148149      |176421      |88795       |48888          |627405 |84519      |74901       |
-
-
-```r
-kable(tail(raw_db[, 1:10]))
+```
+##                                                                                      X1
+## 1 Estimation de population au 1er janvier, par département, sexe et grande classe d'âge
+## 2                                                                            Année 2014
+## 3                                                                                  <NA>
+## 4                                                                          Départements
+## 5                                                                                  <NA>
+## 6                                                                                    01
+##     X2         X3          X4          X5          X6             X7
+## 1 <NA>       <NA>        <NA>        <NA>        <NA>           <NA>
+## 2 <NA>       <NA>        <NA>        <NA>        <NA>           <NA>
+## 3 <NA>       <NA>        <NA>        <NA>        <NA>           <NA>
+## 4 <NA>   Ensemble        <NA>        <NA>        <NA>           <NA>
+## 5 <NA> 0 à 19 ans 20 à 39 ans 40 à 59 ans 60 à 74 ans 75 ans et plus
+## 6  Ain     165152      148149      176421       88795          48888
+##       X8         X9         X10
+## 1   <NA>       <NA>        <NA>
+## 2   <NA>       <NA>        <NA>
+## 3   <NA>       <NA>        <NA>
+## 4   <NA>     Hommes        <NA>
+## 5  Total 0 à 19 ans 20 à 39 ans
+## 6 627405      84519       74901
 ```
 
+```r
+tail(raw_db[, 1:10])
+```
 
+```
+##                                                                                       X1
+## 105                                                                                  973
+## 106                                                                                  974
+## 107                                                                                  DOM
+## 108                                                         France métropolitaine et DOM
+## 109 Source : Insee - Estimations de population (résultats provisoires arrêtés fin 2014).
+## 110                                                                                 <NA>
+##             X2       X3       X4       X5      X6      X7       X8      X9
+## 105     Guyane   106360    72397    52584   14811    4225   250377   54368
+## 106 La Réunion   267789   219852   235187   88002   34164   844994  136826
+## 107       <NA>   579184   450600   529026  220906  100731  1880447  294888
+## 108       <NA> 16171587 16001614 17709879 9941571 5976043 65800694 8270176
+## 109       <NA>     <NA>     <NA>     <NA>    <NA>    <NA>     <NA>    <NA>
+## 110       <NA>     <NA>     <NA>     <NA>    <NA>    <NA>     <NA>    <NA>
+##         X10
+## 105   35384
+## 106  103706
+## 107  209578
+## 108 7939835
+## 109    <NA>
+## 110    <NA>
+```
 
-|    |X1                                                                                   |X2         |X3       |X4       |X5       |X6      |X7      |X8       |X9      |X10     |
-|:---|:------------------------------------------------------------------------------------|:----------|:--------|:--------|:--------|:-------|:-------|:--------|:-------|:-------|
-|105 |973                                                                                  |Guyane     |106360   |72397    |52584    |14811   |4225    |250377   |54368   |35384   |
-|106 |974                                                                                  |La Réunion |267789   |219852   |235187   |88002   |34164   |844994   |136826  |103706  |
-|107 |DOM                                                                                  |NA         |579184   |450600   |529026   |220906  |100731  |1880447  |294888  |209578  |
-|108 |France métropolitaine et DOM                                                         |NA         |16171587 |16001614 |17709879 |9941571 |5976043 |65800694 |8270176 |7939835 |
-|109 |Source : Insee - Estimations de population (résultats provisoires arrêtés fin 2014). |NA         |NA       |NA       |NA       |NA      |NA      |NA       |NA      |NA      |
-|110 |NA                                                                                   |NA         |NA       |NA       |NA       |NA      |NA      |NA       |NA      |NA      |
 It's really an ugly tabular data because header are not on the first line and data after. Then we will need to clean it.
 
 We only need 3 columns :
@@ -85,25 +131,29 @@ Data start at line 6 and end at line 106.
 
 ```r
 clean_data <- raw_db[6:106, c(1,2,8)]
+dim(clean_data)
 ```
 
+```
+## [1] 101   3
+```
 
 ```r
-kable(tail(clean_data))
+# Check the end of the data
+tail(clean_data)
 ```
 
+```
+##                         X1          X2       X8
+## 101                     95  Val-d'Oise  1199207
+## 102 France métropolitaine         <NA> 63920247
+## 103                    971 Guadeloupe    403750
+## 104                    972 Martinique    381326
+## 105                    973      Guyane   250377
+## 106                    974  La Réunion   844994
+```
 
-
-|    |X1                     |X2          |X8       |
-|:---|:----------------------|:-----------|:--------|
-|101 |95                     |Val-d'Oise  |1199207  |
-|102 |France métropolitaine  |NA          |63920247 |
-|103 |971                    |Guadeloupe  |403750   |
-|104 |972                    |Martinique  |381326   |
-|105 |973                    |Guyane      |250377   |
-|106 |974                    |La Réunion  |844994   |
-
-Line 102 is just a sum
+Line 102 is just a sum then delete it.
 
 
 ```r
@@ -123,12 +173,6 @@ db <- data.frame(
 ```
 
 Finaly we have a clean data frame
-
-
-```r
-kable(db)
-```
-
 
 
 |                        |dept |     pop|
@@ -239,34 +283,50 @@ kable(db)
 
 ```r
 library(sp)
-library(rgdal)
-library(rgeos)
-library(mapproj)
-library(maptools)
-library(raster)
 ```
 
 According to this [post](http://web.stanford.edu/~cengel/cgi-bin/anthrospace/download-global-administrative-areas-as-rdata-files), maps can be downloaded from [Global Administrative Areas (GADM)](http://gadm.org).
 
 
+```
+## NULL
+```
+
+
 ```r
 con <- url("http://biogeo.ucdavis.edu/data/gadm2/R/FRA_adm2.RData")
+```
+
+```r
 print(load(con))
 ```
 
 ```
-## Error in print(load(con)): error in evaluating the argument 'x' in selecting a method for function 'print': Error: unexpected '/' in "con <- url(http:/"
+## [1] "gadm"
 ```
+
 
 ```r
 close(con)
+```
 
+Now we have a new `gadm` object in our environment.
+
+## Try the map
+
+With this, it's possible to plot an empty map just to check if we have the good file.
+
+
+```r
+library(sp)
 plot(gadm)
 ```
 
-![plot of chunk unnamed-chunk-11](/assets/unnamed-chunk-11-1.png) 
+<img src="/assets/france_map/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" />
 
-With this I can plot just the map. Now we have to put together the data from the map and data about population
+## Merge map data and pop data
+
+Now we have to put together the data from the map and data about population
 
 
 ```r
@@ -275,7 +335,7 @@ str(gadm, max.level = 2)
 
 ```
 ## Formal class 'SpatialPolygonsDataFrame' [package "sp"] with 5 slots
-##   ..@ data       :'data.frame':	96 obs. of  14 variables:
+##   ..@ data       :'data.frame':	96 obs. of  12 variables:
 ##   ..@ polygons   :List of 96
 ##   ..@ plotOrder  : int [1:96] 57 56 13 58 15 34 62 83 36 75 ...
 ##   ..@ bbox       : num [1:2, 1:2] -5.14 41.33 9.56 51.09
@@ -283,26 +343,7 @@ str(gadm, max.level = 2)
 ##   ..@ proj4string:Formal class 'CRS' [package "sp"] with 1 slot
 ```
 
-```r
-head(gadm@data)
-```
 
-```
-##     PID ID_0 ISO NAME_0 ID_1          NAME_1 ID_2         NAME_2 NL_NAME_2
-## 1 14677   79 FRA France   22        Picardie   80          Somme          
-## 2 14678   79 FRA France   23 Haute-Normandie   27           Eure          
-## 3 14679   79 FRA France   23 Haute-Normandie   76 Seine-Maritime          
-## 4 14680   79 FRA France   24          Centre   18           Cher          
-## 5 14681   79 FRA France   24          Centre   28   Eure-et-Loir          
-## 6 14682   79 FRA France   24          Centre   36          Indre          
-##          VARNAME_2      TYPE_2  ENGTYPE_2         regions  pop
-## 1                  Département Department        Picardie <NA>
-## 2                  Département Department Haute-Normandie <NA>
-## 3 Seine-Inférieure Département Department Haute-Normandie <NA>
-## 4                  Département Department          Centre <NA>
-## 5                  Département Department          Centre <NA>
-## 6                  Département Department          Centre <NA>
-```
 
 
 ```r
@@ -311,7 +352,7 @@ colorss <- rainbow(length(levels(gadm$regions)))
 spplot(gadm, "regions", col.regions = colorss)
 ```
 
-![plot of chunk unnamed-chunk-13](/assets/unnamed-chunk-13-1.png) 
+<img src="/assets/france_map/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
 
 Now, do the same but with popultation
 
@@ -321,19 +362,12 @@ dbs <- merge(gadm@data, db, by.x = "ID_2", by.y = "dept", all.x = TRUE, all.y = 
 # Discretize
 
 gadm$pop <- cut(x = dbs$pop, breaks = 6)
-```
-
-```
-## Error in cut.default(x = dbs$pop, breaks = 6): 'x' must be numeric
-```
-
-```r
 color_pop <- heat.colors(6)
 
 spplot(gadm, "pop", col.regions = color_pop)
 ```
 
-![plot of chunk unnamed-chunk-14](/assets/unnamed-chunk-14-1.png) 
+<img src="/assets/france_map/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" />
 
 Not bad but there is some department missing.
 

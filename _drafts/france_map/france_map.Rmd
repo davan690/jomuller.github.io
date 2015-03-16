@@ -126,16 +126,12 @@ if (con %in% dir()) {
             method = "wget"
             )
 }
+load(con)
 ```
 
 ```{r, eval = FALSE}
 con <- url("http://biogeo.ucdavis.edu/data/gadm2/R/FRA_adm2.RData")
-```
-```{r}
-print(load(con))
-```
-
-```{r, eval = FALSE}
+load(con, verbose = TRUE)
 close(con)
 ```
 

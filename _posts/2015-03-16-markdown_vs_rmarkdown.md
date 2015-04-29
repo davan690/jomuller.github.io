@@ -32,6 +32,7 @@ Size without dependencies in MacOS X | 417 Ko | 3184 Ko
 Main function | `markdownToHTML` | `render`
 YAML | No | Yes
 Table of Content | Yes <br/> (with `option = "toc"`) | Yes <br/> (specified in the YAML header of the _.md_)
+Documentation | Internal | Internal + [Website](http://rmarkdown.rstudio.com/)
 
 # Choice
 

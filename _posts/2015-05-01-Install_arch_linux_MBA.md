@@ -64,3 +64,13 @@ Additionnal pages :
                                  Unlocked Encrypted
 ```
 
+# Post-install
+
+There is lot of bugs after initial installation. Let's fix them
+
+## Keyboard layout
+
+
+## Brighnest level on/off after suspend
+
+

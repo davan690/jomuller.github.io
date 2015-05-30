@@ -68,9 +68,44 @@ Additionnal pages :
 
 There is lot of bugs after initial installation. Let's fix them
 
+## Wifi
+
 ## Keyboard layout
 
+The Keyboard layout is a mess. The fr-mac is not good at all. @#<> are in the wrong place and I can't find the brackets. 
 
 ## Brighnest level on/off after suspend
 
+As described in [this post](https://github.com/jomuller/jomuller.github.io.git), the backlight can't be set well after suspend.
+ 
+There is a solution with a patch.
 
+First, update the whole system
+
+```
+sudo pacman -Syu
+```
+
+Maybe the wifi driver will be broken, then reinstall it if the kernel was reinstalled.
+
+Upgrade
+
+```sudo pacman -Syu```
+
+Then restart if linux kernel was upgraded.
+
+Install linux headers
+
+```sudo pacman -S linux-headers```
+
+
+Install the mba6x_bl-dkms patch from AUR
+
+```
+wget https://aur.archlinux.org/packages/mb/mba6x_bl-dkms/mba6x_bl-dkms.tar.gz
+tar -xvf mba6x_bl-dkms.tar.gz
+cd mba6x_bl-dkms
+makepkg -i
+```
+
+## Touchpad

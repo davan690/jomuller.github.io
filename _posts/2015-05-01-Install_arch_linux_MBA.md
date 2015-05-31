@@ -12,7 +12,9 @@ author: Joris Muller
 
 One of my colleague suggested me to try Arch Linux several months ago. I'm a Mac OS user since more than two decades but I'm using Linux on my servers and some devices like the Rasberry Pi or some old computers. Currently, most of the softwares I'm using are open-source: Firefox, Libreoffice, Latex, Vim, Inkscape, Gimp... Furthermore, I start to be tired with the Apple's softwares. For example, I was fan of Aperture. Apple just decided to stop this product.
 
-Well, in this post, I will try to describe the installation of Arch Linux on my MacBook Air 6.1 (i7) in dual boot with an existing OS X.
+According to some posts, the [life with a laptop on linux](https://bbs.archlinux.org/viewtopic.php?pid=1478408#p1478408) seems to be hard but I want to give a try to open source OS.
+
+I will use this post as a memo of my installation of Arch Linux on my MacBook Air 6.1 (i7) in dual boot with an existing OS X.
 
 # Bootloader strategy
 
@@ -109,3 +111,4 @@ makepkg -i
 ```
 
 ## Touchpad
+

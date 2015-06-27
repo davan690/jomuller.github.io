@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How data science may help in hospital infection control"
+title:  "How data science may help in hospital infection control: articles from the AJIC"
 date: 2015-06-27
 categories: 
     - Infection control

@@ -1,11 +1,13 @@
 ---
 layout: post
-title:  "Is there a good Linux Software to annotate PDFs?"
+title:  "Is there a good Linux software to annotate PDFs?"
 date: 2015-05-29 
 categories: 
     - Linux
     - PDF
     - Software
+    - In English
+author: Joris Muller
 ---
 
 As a Mac OS user, I'm very happy to use the _Preview_ software to read and annotate my PDFs. I read a lot of PDF because I'm in an academic field. _Preview_ does exactly what I need: Highlight following the lines and keeping the text clear (not just an alpha layer), comments, add figures. Furthermost, when I'm editing a PDFs with _Preview_, I don't have to save it to an other format. But _Preview_ have a major drawback: it's not open source and don't exist on Linux.

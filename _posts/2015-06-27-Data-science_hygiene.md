@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How data science may help in hospital infection control: articles from the AJIC"
+title:  "American Journal of Infection Control: an issue about information technologies!"
 date: 2015-06-27
 categories: 
     - Infection control
@@ -22,7 +22,7 @@ But for the moment, I feel that there is a shyly usage of data science in this d
 
 I was really excited when I saw that's one of the major paper in hospital infection control dedicated his last issue about computer and data science!
 
-<img src="/assets/ajic_cover.git" title="Cover of AJIC"  style="display: block; margin: auto;" />
+<img src="/assets/ajic_cover.gif" title="Cover of AJIC"  style="display: block; margin: auto;" />
 
 The [American Journal of Infection Control](http://www.journals.elsevier.com/ajic-american-journal-of-infection-control/) is the official publication of the [Association for Professionals in Infection Control and Epidemiology](http://apic.org/). It has a five-year impact factor of 2.5 in 2015. That's not huge but quite good in this field.
 

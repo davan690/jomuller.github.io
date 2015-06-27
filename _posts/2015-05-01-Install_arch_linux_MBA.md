@@ -12,7 +12,10 @@ author: Joris Muller
 
 One of my colleague suggested me to try Arch Linux several months ago. I'm a Mac OS user since more than two decades but I'm using Linux on my servers and some devices like the Rasberry Pi or some old computers. Currently, most of the softwares I'm using are open-source: Firefox, Libreoffice, Latex, Vim, Inkscape, Gimp... Furthermore, I start to be tired with the Apple's softwares. For example, I was fan of Aperture. Apple just decided to stop this product.
 
+According to some posts, the [life with a laptop on linux](https://bbs.archlinux.org/viewtopic.php?pid=1478408#p1478408) seems to be hard but I want to give a try to open source OS.
+
 This post will be mostly some reminders about the installation of Arch Linux on my MacBook Air 6.1 (i7) in dual boot with an existing OS X.
+
 
 # Bootloader strategy
 
@@ -63,4 +66,50 @@ Additionnal pages :
                                  C84C5CBA-291A-42CB-B6A6-CF8AE01B9DF5
                                  Unlocked Encrypted
 ```
+
+# Post-install
+
+There is lot of bugs after initial installation. Let's fix them
+
+## Wifi
+
+## Keyboard layout
+
+The Keyboard layout is a mess. The fr-mac is not good at all. @#<> are in the wrong place and I can't find the brackets. 
+
+## Brighnest level on/off after suspend
+
+As described in [this post](https://github.com/jomuller/jomuller.github.io.git), the backlight can't be set well after suspend.
+ 
+There is a solution with a patch.
+
+First, update the whole system
+
+```
+sudo pacman -Syu
+```
+
+Maybe the wifi driver will be broken, then reinstall it if the kernel was reinstalled.
+
+Upgrade
+
+```sudo pacman -Syu```
+
+Then restart if linux kernel was upgraded.
+
+Install linux headers
+
+```sudo pacman -S linux-headers```
+
+
+Install the mba6x_bl-dkms patch from AUR
+
+```
+wget https://aur.archlinux.org/packages/mb/mba6x_bl-dkms/mba6x_bl-dkms.tar.gz
+tar -xvf mba6x_bl-dkms.tar.gz
+cd mba6x_bl-dkms
+makepkg -i
+```
+
+## Touchpad
 

@@ -10,7 +10,7 @@ You can contact me by email at jomuller AT jom DOT link.
 
 If you want to know more about my professionals skills, you are welcome to contact me on [LinkedIn](http://fr.linkedin.com/in/jorismuller).
 
-<a href="http://fr.linkedin.com/in/jorismuller" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/assets/logo_linkedin.png" width="20" height="15" alt="View Joris Muller's LinkedIn profile" style="vertical-align:middle;" border="0">&nbsp;View Joris Muller's profile</span></a>
+<a href="http://fr.linkedin.com/in/jorismuller" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="/assets/logo_linkedin.png" width="20" height="15" alt="View Joris Muller's LinkedIn profile" style="vertical-align:middle;" border="0">&nbsp;View Joris Muller's LinkedIn profile</span></a>
 
 <a href="https://github.com/jomuller">
 <span style="font: 80% Arial,sans-serif; color:#0783B6;">

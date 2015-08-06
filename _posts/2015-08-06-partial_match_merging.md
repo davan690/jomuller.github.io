@@ -98,4 +98,4 @@ row_id_db1 | row_id_db2 | match_status | match_score
 
 # Conclusion
 
-I will implement this solution in _R_ try this solution the next days. I'm sure there is someone else who already think about this problem (because it's very common) then I will also search for already existing solution.
+I will try to implement this solution in _R_ these days. Nevertheless, I'm sure there is someone else who already think about this problem (because it's very common) then I will also search for already existing solution.

@@ -91,6 +91,11 @@ row_id_db1 | row_id_db2 | match_status | match_score
 2   | 1  | "Partial match" | 1
 3   | 3  | "Suspicious match" | 16
 
+# Note on the solution
+
+- The algorithm is not optimized and cost a lot
+- I have to found something for the marital name, because someone with a totaly different last name should be the good one if it's her marital name but will have a bad score. Then add a condition on marital name.
+
 # Conclusion
 
 I will implement this solution in _R_ try this solution the next days. I'm sure there is someone else who already think about this problem (because it's very common) then I will also search for already existing solution.

@@ -19,8 +19,7 @@ I have two databases I have to merge:
 The first database is coming from a prospective study, manually filled. I already did some data management and error checking, but there must always be errors. Now the first columns of this database should be as this :
 
 | First name | Last name | Date of Birth | Gender | Date of entry|(other data)
-|------------|-----------|---------------|--------|--------------------------
-|---
+|------------|-----------|---------------|--------|--------------|---
 | Johne       | Down      | 1978-09-02    | M      | 2004-01-05 |  ...
 | Maria      | Gonzales  | 1988-01-16    | F      | 2004-06-23 | ...
 
@@ -31,8 +30,7 @@ Notice I have altered the first name of John and the date of birth of Maria.
 The second database is coming from the [DRG-based](https://en.wikipedia.org/wiki/Diagnosis-related_group) information system. This database is mostly reliable on the variables I will use to merge (first and last name, gender, date of birth and date of hospitalization). An imaginary example of this database should be:
 
 | First name | Last name | Date of Birth | Gender | Date of entry| GHM | (other data)
-|------------|-----------|---------------|--------|--------------------------|---
-|---
+|------------|-----------|---------------|--------|-------------|---|---
 | John       | Down      | 1978-09-02    | M      | 2004-01-05 | 03C19 | ...
 | Maria      | Gonzales  | 1988-01-17    | F      | 2004-06-23 | 03M06 | ...
 | Maria      | Gonzales  | 1988-01-17    | F      | 2005-02-05 | 03M06 | ...

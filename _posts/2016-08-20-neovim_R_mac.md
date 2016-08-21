@@ -16,25 +16,36 @@ I need also a gui version of NeoVim for fast editing.
 # Pre-requise
 
 - OSX 10.11
+- Xcode
 - Admin access
 - Homebrew
-- Time necessary : 
+- Time necessary : 10 min
 
 I consider there is no previous neovim install. We will not import my previous configuration, I want a fresh install.
 
-# Why ?
-
-# Softwares
+# Softwares to install
 
 - [NeoVim](https://github.com/neovim/neovim)
-- [vim-plug](https://github.com/junegunn/vim-plug) plugin manager
-- Nvim-R plugin
+- [vim-plug](https://github.com/junegunn/vim-plug)
+- [Nvim-R plugin](https://github.com/jalvesaq/Nvim-R)
+- [neovim-dot-app](https://github.com/rogual/neovim-dot-app)
 
 # Recipe
 
-## Install NeoVim
+## Install NeoVim and UI
 
-Homebrew
+```
+brew tap neovim/neovim
+brew tap rogual/neovim-dot-app
+brew install neovim-dot-app
+brew linkapps neovim-dot-app
+```
+
+If there is some problem with e.g. msgpack, try
+
+```
+brew install --HEAD neovim-dot-app
+```
 
 ## Install the plugin manager
 

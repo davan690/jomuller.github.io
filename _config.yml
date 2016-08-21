@@ -13,5 +13,5 @@ markdown: kramdown
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
 extensions: [fenced_code_blocks]
-highlighter: pygments
+highlighter: rouge 
 comment: true

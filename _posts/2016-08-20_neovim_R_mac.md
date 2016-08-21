@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Set-up NeoVim on Mac for R"
-date: 2016-8-20 
+date: 2016-08-20 
 categories: R data_science Vim NeoVim IDE
 ---
 

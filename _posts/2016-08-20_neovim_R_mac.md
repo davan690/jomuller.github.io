@@ -2,10 +2,13 @@
 layout: post
 title:  "Set-up NeoVim on Mac for R"
 date: 2016-08-20 
-categories: R data_science Vim NeoVim IDE
+categories: 
+    - R 
+    - data_science
+    - Vim
+    - NeoVim
+    - IDE
 ---
-
-# Objective
 
 The objective of this post is to describe step-by-step how to set up NeoVim on Mac to use it as a powerfull editor for R code.
 I need also a gui version of NeoVim for fast editing.

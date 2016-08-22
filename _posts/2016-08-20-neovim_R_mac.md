@@ -13,6 +13,8 @@ categories:
 The objective of this post is to describe step-by-step how to set up NeoVim on Mac to use it as a powerfull editor for R code.
 I need also a gui version of NeoVim for fast editing.
 
+<img src="/assets/neovim-mark.png" title="NeoVim mark" style="display: block; margin: auto;" />
+
 # Pre-requise
 
 - OSX 10.11

@@ -7,7 +7,11 @@ categories:
     - NeoVim
 ---
 
+<img src="/assets/antidote_neovim.png" title="Antidote and Neovim" style="display: block; margin: auto;" />
+
 The [Antidote spell checker](http://www.antidote.info/antidote/for-english-speakers) is from my point of view the best. But there is no integration to VIM. 
+
+
 
 Then, I found a way – a least on Mac – to call Antidote from Vim. Simply add these lines to your Vim (or NeoVim) config file:
 

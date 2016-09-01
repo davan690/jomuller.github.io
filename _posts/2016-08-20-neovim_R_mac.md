@@ -93,3 +93,18 @@ And install
 ```
 
 That's all!
+
+# Extra
+
+Python support 
+
+```
+sudo pip3 install neovim
+```
+
+And use always system clipboard. Add in `init.vim`
+
+```
+set clipboard+=unnamedplus
+```
+

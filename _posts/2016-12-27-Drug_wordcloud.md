@@ -1,5 +1,12 @@
-# Drugs' name wordcloud
-
+---
+layout: post
+title:  "Start with wordcloud"
+date: 2016-12-27 
+categories:
+    - Data-Science
+    - Pet project
+    - Datavisualisation
+---
 
 
 I followed my good resolutions on practising data analysis in [my previous post](http://blog.jom.link/data_science_pet_project.html) and started to play with the [French drug database](https://github.com/jomuller/explore_drug_database).
@@ -104,9 +111,7 @@ cent <- forms %>%
 kable(head(cent))
 ```
 
-
-
-.                      Freq
+name                    Freq
 --------------------  -----
 comprimé pelliculé     2289
 comprimé               1782
@@ -114,6 +119,7 @@ gélule                 1019
 solution injectable     934
 poudre                  886
 comprimé sécable        852
+
 
 # Wordcloud
 

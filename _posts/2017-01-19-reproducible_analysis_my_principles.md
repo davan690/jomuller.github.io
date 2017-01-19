@@ -25,7 +25,7 @@ Beside some side projects, I use mainly R in an academic context. For this, I mu
 
 Furthermore I have some constraints. 
 
-- My workflow has to be **OS agnostic**. For academic works, I use various Linux distributions on my workstation and some remote machines. My hospital's computer with non-anonymous data run exclusively on Windows and I don't have root access (then limited choice of my software tools). My personal setting is a mix between [macOS](https://en.wikipedia.org/wiki/MacOS) and Linux boxes.
+- My workflow has to be **platform agnostic**. For academic works, I use various Linux distributions on my workstation and some remote machines. My hospital's computer with non-anonymous data run exclusively on Windows and I don't have root access (then limited choice of my software tools). My personal setting is a mix between [macOS](https://en.wikipedia.org/wiki/MacOS) and Linux boxes.
 - For the same reason, it must be **easy to deploy**. I don't want to spend hours setting up a virtual or remote machine. Furthermore, all my colleagues don't have high computer skills (non their job, *e.g.* clinicians) but want to reproduce the analysis.
 - **Free open source software** ([FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software)) is mandatory. Peoples who needs to run my analysis don't want to pay for software, academics are not rich. Furthermore, open-source software is the only way to control really what the software does. The reproducibility is unattainable with close-source software black boxes.
 - Input must be the real **raw data**, whatever the format is (including *csv*, Microsoft Excel and Access files, SAS data or direct connection to [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system)).
@@ -35,18 +35,20 @@ Furthermore I have some constraints.
 
 With these goals and constraints, R is a natural choice:
 
-- R is really easy to install (contrary to Python with data science extensions)
+- R is light (± 70 Mo) and easy to install compared to Python with data science modules or SAS with its awkward licence checking system.
 - R's package system give me all the tools needed, on every OS.
-- R is FOSS
-- R tends to become the *lingua franca* in data science and statistics
-- Rstudio is a tremendous IDE, also easy to deploy
+- R is FOSS.
+- R tends to become the *lingua franca* in data science and statistics.
+- [Rstudio](https://www.rstudio.com/products/rstudio/) is a tremendous IDE, also easy to deploy
 
-After several years of R practice, I manage to implement a simple workflow based on 
+After several years of R practice, I developed a simple workflow based on 
 
 - R with several packages: rmarkdown, knitr
 - Pandoc 
 - Git
 - Coding style
+
+This is basic, doesn't cover all reproductibility problems (*e.g.* no software archive) but is for me a good balance.
 
 I will describe this workflow in a later post.
 

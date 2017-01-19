@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Design a plugin to use Antidote in Vim"
-date: 2016-08-29 
 categories:
     - Vim
     - NeoVim

@@ -4,6 +4,8 @@ title:  "Start with wordcloud"
 date: 2016-12-27 
 categories:
     - Data-Science
+    - R
+    - r-bloggers
     - Pet project
     - Datavisualisation
 ---

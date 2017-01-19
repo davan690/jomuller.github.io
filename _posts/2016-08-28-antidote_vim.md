@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Call Antidote spell checker from Vim"
-date: 2016-08-28 
 categories:
     - Vim
     - NeoVim

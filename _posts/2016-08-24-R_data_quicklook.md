@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "R data quicklook on OSX"
-date: 2016-08-24 
 categories:
     - R
+    - r-bloggers 
     - OSX
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: post
 title:  "Pet projet: an other step to learn data science"
-date: 2016-12-18 
 categories:
     - Data-Science
     - Pet project
+    - r-bloggers
+    - R
     - Datacamp
 ---
 

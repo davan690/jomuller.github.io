@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Incremental backup in Ubuntu"
-date: 2016-10-27 
 categories:
     - Linux
     - Ubuntu

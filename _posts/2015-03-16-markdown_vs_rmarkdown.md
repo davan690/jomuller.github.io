@@ -1,12 +1,11 @@
 ---
 layout: post
 title: rmarkdown vs markdown R packages
-date: 2015-03-16
 categories:
-- In English
-- GNU R
-- packages
-author: Joris Muller
+   - In English
+   - packages
+   - R
+   - r-bloggers 
 ---
 
 To convert Markdown files to _html_ in [_R_](http://r-project.org/) two packages are currently available: [_markdown_](http://cran.r-project.org/web/packages/markdown/index.html) and [_rmarkdown_](http://cran.r-project.org/web/packages/rmarkdown/index.html) (note there is an extra _r_ to the last one).

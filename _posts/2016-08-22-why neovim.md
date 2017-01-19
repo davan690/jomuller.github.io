@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Why to try Neovim"
-date: 2016-08-22 
 categories:
     - NeoVim
     - Vim

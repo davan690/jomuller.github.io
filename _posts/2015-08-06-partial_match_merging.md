@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Merge two data frames with partial matching"
-date: 2015-08-06
 categories: 
     - R
+    - r-bloggers 
     - Data science
     - In English
 ---

@@ -1,23 +1,11 @@
 ---
 layout: post
 title: Install last version of vim-r-plugin for MacVim
-date: 2015-02-01 10:32:49.000000000 +01:00
 categories:
 - GNU R
 - In English
 - Vim
-tags: []
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '2'
-author:
-  login: jomuller
-  email: joris.muller@free.fr
-  display_name: jomuller
-  first_name: Joris
-  last_name: Muller
+- r-bloggers
 ---
 <p><a href="http://jomuller.fr/wp-content/uploads/2015/02/macvim_r.jpg"><img class="alignleft size-full wp-image-419" src="assets/macvim_r.jpg" alt="macvim_r" width="86" height="238" /></a>Since 4 months I'm using Vim as my main text editor for editing R code. Out the box, Vim and R are not able to communicate together. The <a href="https://github.com/jcfaria/Vim-R-plugin">vim-r-plugin</a> associated with the <a href="https://github.com/jalvesaq/VimCom">VimCom</a> R package provides a highly efficient link between Vim and R.</p>
 <p>On Mac OS X, <a href="https://code.google.com/p/macvim/">MacVim</a> is an elegant solution to use Vim with a good integration to the OS. This is also easier than a CLI version for a beginner to discover the power of Vim. Indeed, there is menus for common commands and a lot of things work as user should expect in Mac OS X: pasting to the system clipboard, binding to standard shortcuts, directly open a file from the Finder…</p>

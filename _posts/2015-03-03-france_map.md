@@ -1,13 +1,12 @@
 ---
 layout: post
-pusblished: true
 title:  "Chloropleth map of France"
-date: 2015-03-03 
 categories: 
     - R 
     - Data science
     - Geographical data
     - Graphical representation 
+    - r-bloggers
 ---
 
 

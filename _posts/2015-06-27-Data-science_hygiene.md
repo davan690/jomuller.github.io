@@ -1,12 +1,10 @@
 ---
 layout: post
 title:  "American Journal of Infection Control: an issue about information technologies!"
-date: 2015-06-27
 categories: 
     - Infection control
     - Hygiene
     - In English
-author: Joris Muller
 ---
 
 Currently, I'm working in an infection control department in a French teaching hospital. This field is without doubt my favorite because it's close to the patients, it implies a broad range of knowledge:

@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Principles of my basic reproducible data analysis workflow"
+title: "A basic reproducible data analysis workflow - principles"
 categories:
     - R
+    - r-bloggers 
     - data science
     - reproducible analysis
 ---

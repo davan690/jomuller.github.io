@@ -27,10 +27,11 @@ Beside some side projects, I use mainly R in an academic context. For this, I mu
 Furthermore I have some constraints. 
 
 - My workflow has to be **platform agnostic**. For academic works, I use various Linux distributions on my workstation and some remote machines. My hospital's computer with non-anonymous data run exclusively on Windows and I don't have root access (then limited choice of my software tools). My personal setting is a mix between [macOS](https://en.wikipedia.org/wiki/MacOS) and Linux boxes.
-- For the same reason, it must be **easy to deploy**. I don't want to spend hours setting up a virtual or remote machine. Furthermore, all my colleagues don't have high computer skills (non their job, *e.g.* clinicians) but want to reproduce the analysis.
+- For the same reason, it must be **easy to deploy**. I don't want to spend hours setting up a virtual or remote machine. Furthermore, peoples who wants to reproduce my analysis don't have either the time or the ressources to install some complicated software suite.
 - **Free open source software** ([FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software)) is mandatory. Peoples who needs to run my analysis don't want to pay for software, academics are not rich. Furthermore, open-source software is the only way to control really what the software does. The reproducibility is unattainable with close-source software black boxes.
 - Input must be the real **raw data**, whatever the format is (including *csv*, Microsoft Excel and Access files, SAS data or direct connection to [RDBMS](https://en.wikipedia.org/wiki/Relational_database_management_system)).
 - Output could be html files (intermediate reports), PDF (for printing) or web app (Shiny).
+- It must be **IDE agnostic**. I love Rstudio but I have to work on headless remote machines and I don't want to set up an Rstudio server each time. Script should be launch simply by a `R CMD` and edited in vim (or [nvim](2016-08-22-why neovim)).
 
 # Summary of the implementation
 
@@ -51,7 +52,7 @@ After several years of R practice, I developed a simple workflow based on
 
 This is basic, doesn't cover all reproductibility problems (*e.g.* no software archive) but is for me a good balance.
 
-I will describe this workflow in a later post.
+I will [describe this workflow in a later post]({% post_url 2017-01-21-implementation_basic_workflow %}).
 
 If you have your own reproducible data analysis workflow, please feel free to describe it in the commentaries or send me a link!
 

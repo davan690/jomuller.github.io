@@ -52,7 +52,7 @@ After several years of R practice, I developed a simple workflow based on
 
 This is basic, doesn't cover all reproductibility problems (*e.g.* no software archive) but is for me a good balance.
 
-I will describe this workflow in a later post.
+I will [describe this workflow in a later post]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}).
 
 If you have your own reproducible data analysis workflow, please feel free to describe it in the commentaries or send me a link!
 

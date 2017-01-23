@@ -16,7 +16,7 @@ This workflow will allow you to run a complete analysis based on multiple files 
 
 # Summary
 
-This workflow allows to process raw files in order to produce reports (in html or PDF). There are 3 main components:
+There are 3 main components in this workflow:
 
 1. Sofwares: 
     - [R](https://www.r-project.org/) of course.
@@ -69,7 +69,7 @@ name_of_the_project
 As you can observe, there are some principles :
 
 - Directory names are as explicit as possible to be understandable by anyone getting these files.
-- Reports don't belong to the script, because I don't produce a report for every script or Rmd (there is child Rmd) and this way, it's straightforward where people should look at the results (reports).
+- Reports and the script or Rmarkdown files are not in the same directory. I don't produce a report for every script or Rmd (there is child Rmd) and this way, it's straightforward where people should look at the results (reports).
 - Reports are sorted using 2-digit numbers. Data science is also an art to tell stories in the right order.
 - I use *rmarkdown* files to produce my report, to have both the results and my comments. These comments are fundamental, this is an appreciation of the results by the data scientist.
 - A rmarkdown file, *sysinfo.Rmd*, will be used to produce a report keeping trace of the name and version of R's package used (with `sessionInfo()`) and some extra information about the OS (`Sys.info()`). In an ideal workflow, these commands have to be called at the end of each report.

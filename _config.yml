@@ -15,6 +15,7 @@ redcarpet:
 extensions: [fenced_code_blocks]
 highlighter: rouge 
 comment: true
+google_analytics: UA-90761131-1
 # gems: [jekyll-paginate]
 # paginate: 5
 # paginate_path: "/page:num/"

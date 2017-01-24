@@ -166,7 +166,7 @@ Because my *.Rmd* don't live in the root directory, I add a setup chunk on all t
 
 When I have to rebuild all the reports (*e.g.* due to some raw data changes), I just run the script `run_all.R`.
 
-# Benefits in real life
+# <a name="benefits"></a> Benefits in real life
 
 This basic workflow works for me because: 
 

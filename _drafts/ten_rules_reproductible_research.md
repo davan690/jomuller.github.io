@@ -8,16 +8,16 @@ categories:
 
 Img paper
 
-"Ten Simple Rules for Reproducible Computational Research" is the title of a
- freely available paper on [PLOS computational biology](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285). As [I'm currently very interested]({% post_url 2017-01-19-reproducible_analysis_my_principles %}) on the subject of reproductible data analysis,  caught my attention.
+"[Ten Simple Rules for Reproducible Computational Research](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285)" is a
+ freely available paper on [PLOS computational biology](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285). As [I'm currently very interested]({% post_url 2017-01-19-reproducible_analysis_my_principles %}) on the subject of reproductible data analysis,  it caught my attention.
 
-In this posts, I will comment this ten rules, their relative importance and the possible implementation with R, all of this with my point of view of epidemiologist interested by healthcare data-reuse.
+In this posts, I will comment this ten rules, their relative importance and the possible implementation with R, all of this with my point of view of epidemiologist interested by healthcare data-reuse. I will also check if [my workflow]({% post_url 2017-01-21-implementation_basic_reproductible_workflow%}) comply with these rules.
 
 For those who are in the hurry, I [summarize this rules and possible implementation in R in a table](#summary).
 
 # Introduction
 
-The author of this paper, Geir Kjetil Sandve, is [ assistant-professor of Norwegian](http://www.mn.uio.no/ifi/english/people/aca/geirksa/index.html) in team of biomedical informatics. According to his LinkedIn profile, he his skilled in R then this tens rules could be writen with R in mind althoug he his using others tools in his recent papers. Biomedical informatics is quite far from my practice. For example, they have dedicated integrated framework allowing reproducibility. 
+The author of this paper, Geir Kjetil Sandve, is [ assistant-professor of Norwegian](http://www.mn.uio.no/ifi/english/people/aca/geirksa/index.html) in team of biomedical informatics. According to his LinkedIn profile, he his skilled in R. I suppose these tens rules could be writen with R in mind althoug he his using others tools in his recent papers. Biomedical informatics is quite far from my practice. For example, they have dedicated integrated framework allowing reproducibility. 
 
 Two successive main goals for reproducible data analysis are pointed out:
 
@@ -29,15 +29,33 @@ The author highlight the needs of a pragmatic setting that needs a trade-off bet
 
 # The ten rules
 
-1. "*For Every Result, Keep Track of How It Was Produced*".
-2. <a name="manual_steps"></a>"*Avoid Manual Data Manipulation Steps*".
+The title below are the exact reproduction of the rules proposed in the Sandve's paper.
+
+## 1 - *For Every Result, Keep Track of How It Was Produced*
+
+In other words one report = one script. But there is a extra step because the ability to reproduce a result may rely on previous steps. Then Sandve advice is to note the exact sequence of steps or even better, to allow the direct execution of everything. I implemented this with the "[One report file = one R markdown file]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#report_equal_rmarkdown)" rule and the "[one R script to rule them all]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#run_all)". Another intersting proposition is to use Make files to fit all together. I already use this to produce my MPH dissertation in a well formated PDF and I found this perfect in this case. Yet, there is a major drawback: makefiles are not platform-agnostic.
+
+
+## <a name="manual_steps"></a> 2 - *Avoid Manual Data Manipulation Steps*
+
+Before mastering R, I used WYSIWYG softwares like Microsoft Excel, Libreoffice Calc or CDC's EpiInfo. They are easy to use but once the report produced, it was impossible to check the steps or rerun them with new data. Furthermore, human more error-prone than machines. But if you are a R user, the solution is builtin : just use R for every step (including datamanagement)! Furthermore, one have to check his coding style and avoid copy-pasting of code. In my workflow, I embrace [functional programing](http://adv-r.had.co.nz/Functional-programming.html) as much as I can (with a [dedicated folder]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#folders)).
+
+## *Archive the Exact Versions of All External Programs Used*
+
+packrat
+
+## *Version Control All Custom Scripts*
+
+git
+
+
 
 # <a name="summary"></a>Summary
 
-| |Rule summary | Possible implementation in R|
-|:---:|:-----|:-----------------------------|
-|1 | *Keep track* | Keep every R script |
-|2 | *No manual manipulation* | Just use R! |
+| |Rule summary | Possible implementation in R| Implementation in my workflow |
+|:---:|:-----|:-----------------------------|------:|
+|1 | *Keep track* | Keep every R script and track the sequence to run them | [a results = a script]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#report_equal_rmarkdown) and [`run_all.R`]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#run_all) |
+|2 | *No manual manipulation* | Just use R! | R and functional programming |
 |3 | *Archive software*| VM, docker or packrat |
 |4 | *Version control* | Git |
 |5 | *Record intermediate results* | *.rds* and *.csv* |

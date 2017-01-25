@@ -28,7 +28,6 @@ $on-palm:          600px;
 $on-laptop:        800px;
 
 
-
 // Using media queries with like this:
 // @include media-query($on-palm) {
 //     .wrapper {
@@ -50,3 +49,16 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+// for titles
+h1 {
+    font-size: 150%;
+}
+
+h2 {
+    font-size: 130%;
+}
+
+h3 {
+    font-size: 110%;
+}

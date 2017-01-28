@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Use the "Ten Simple Rules for Reproducible Computational Research" in R
+title:  The "Ten Simple Rules for Reproducible Computational Research" are easy to reach for R users
 categories: 
     - R 
     - Reproductible research

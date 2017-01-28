@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  How to implement in R the "Ten Simple Rules for Reproducible Computational Research"?
+title:  Use the "Ten Simple Rules for Reproducible Computational Research" in R
 categories: 
     - R 
     - Reproductible research
@@ -17,7 +17,7 @@ For those who are in the hurry, I [summarize this rules and possible implementat
 
 # Introduction
 
-The author of this paper, Geir Kjetil Sandve, is [ assistant-professor of Norwegian](http://www.mn.uio.no/ifi/english/people/aca/geirksa/index.html) in team of biomedical informatics. According to his LinkedIn profile, he his skilled in R. I suppose these tens rules could be writen with R in mind althoug he his using others tools in his recent papers. Biomedical informatics is quite far from my practice. For example, they have dedicated integrated framework allowing reproducibility. 
+The author of this paper, Geir Kjetil Sandve, is [ assistant-professor of Norwegian](http://www.mn.uio.no/ifi/english/people/aca/geirksa/index.html) in team of biomedical informatics. I suppose these tens rules could be writen with R in mind because he cite it in rule 7. However, biomedical informatics is quite far from my practice and he seems to use other tools. For example, they have dedicated integrated framework allowing reproducibility. 
 
 Two successive main goals for reproducible data analysis are pointed out:
 
@@ -63,7 +63,43 @@ A common practice is to use manually named files ("script_v1.R", "script_v2.R", 
 Use a version control system. Using R an Rstudio, git is the natural choice because it's well integrated and allow to interact with GitHub that tends to be (for good or bad) an unofficial package repository. The learning curve of these software is not steep compared to R.
 
 
-## 5 - *Record All Intermediate Results, When Possible in Standardized Formats*
+## <a name="rule5"></a>5 - *Record All Intermediate Results, When Possible in Standardized Formats*
+
+In theory, because we use reproductible data analysis, intermediate results are not mandatory. However a long process could be necessary to produce one results: *e.g.* data importation, cleaning, databases merging and additional variable creation are the basic first parts in my analysis. If I have to re-run all this stack each time I want to make any analysis I loose a lot of time. 
+
+![Example of intermediate results](/assets/produced_data.jpg)
+
+In my workflow, intermediate results are mandatory because one R markdown file = one question. The only way to chain all my R markdown files is to use intermediate data files. For example, my first file is almost always "import.Rmd". This import the raw files (csv, xlsx, mdb, web scrapping...). At the end of this R markdown file, I record the results. This way, the data imported are directly available for the next part of the analysis (most of the time data cleaning). 
+
+My prefered format is RDS as [suggested some others](http://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/) with `saveRDS`. Other option is RData. And when it is a really important results, I save it also in .csv, just in case someone else wants to check the data with another software.
+
+## 6 - *For Analyses That Include Randomness, Note Underlying Random Seeds*
+
+Randomness is common: for example when using bootstrap method to estimate confidence intervals. Consequence: each time you run the analysis you have slighly differents results. The solution is easy to implement in R: just use `set.seed()`.
+
+![Dice](https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Dice_%28PSF%29.png/298px-Dice_%28PSF%29.png)
+
+## 7 - *Always Store Raw Data behind Plots* 
+
+Plots are important to communicate results. Producing an informative plot takes time and it's very common necessary to make cosmetical changes in a plot to fit in a final report or in a paper. As many R users, I use mainly ggplot2 to produce high-quality plots. Before starting a plot with ggplot, I produce the exact dataframe needed and simply save it with `saveRDS()`. This rules is [almost the same than No 5](#rule5).
+
+![A plot I don't want to make again from scratch](/assets/hba1c-pentes.jpg)
+
+## 8 - *Generate Hierarchical Analysis Output, Allowing Layers of Increasing Detail to Be Inspected*
+
+The basic idea is that a summarized output (plot, table...) have to be linked with detailed value. This allow to debug this results.
+
+In my workflow, I simply print the intermediate results (*e.g.* for a model with `summary(model_name)`) in the R Markdown file that will generate the final output. It's verbose but the people just have to go the end of the reports to find the summarized output. And because one R markdown file = one question, in theory there is only one summarised output in a R markdown file.
+
+## 9 - *Connect Textual Statements to Underlying Results*
+
+A data scientist could greatly increase the value of a results by adding clarification about how to read the results and how this results was produce. To implement this R markdown or Sweave are easy-to-use solutions. 
+
+## 10 - *Provide Public Access to Scripts, Runs, and Rsults*
+
+In my case, my "Public" are the people who ask me to analyze their data. Then I just send to them the whole project folder and explain them quickly were to find the reports (in the */reports/* subdirectory) and plots for their papers (in the *plots/* directory). It's straighforward and don't add any extra step.
+
+When possible (for my personal projects), I share my projects with Git, but most of the time it's just a copy to an USB key or a zipped archive send by email.
 
 
 # <a name="summary"></a>Summary
@@ -74,15 +110,16 @@ Use a version control system. Using R an Rstudio, git is the natural choice beca
 |2 | *No manual manipulation* | Just use R! | R and functional programming |
 |3 | *Archive software*| VM, docker or packrat | [*packrat*](https://cran.r-project.org/web/packages/packrat/index.html) (work in progress) + `sessionInfo()` + `Sys.info()` |
 |4 | *Version control* | Git, SVN, mercury | Git |
-|5 | *Record intermediate results* | *.Rdata*, *.rds*, *.csv*, *.txt*, *.xlsx*... | *.rds* + *.csv* |
-|6 | *Note random seeds* | `set.seed()`` |
-|7 | *Store plot's data* | *.rds* |
-|8 | *Hierarchical Analysis output* | ? |
-|9 | *Comment the results* | R markdown |
-|10| *Public access* | Github, Gitlab, paper's repository... |
+|5 | *Record intermediate results* | *.Rdata*, *.rds*, *.csv*, *.txt*, *.xlsx*... | `saveRDS()` + `write.csv()`|
+|6 | *Note random seeds* | `set.seed()` | `set.seed()` |
+|7 | *Store plot's data* | *.rds* | `saveRDS()` before ggplot |
+|8 | *Hierarchical Analysis output* | Print intermediate results | rmarkdown chunks |
+|9 | *Comment the results* | Link results to text file, Sweave or Knitr  | R markdown files in *rmds/* subdirectory |
+|10| *Public access* | Github, Gitlab, paper's repository... | Send the whole project's directory |
 
 # Conclusion
 
-All the 10 rules are easely recheable with R.
+All the 10 rules are easely recheable with R. Just by using R itself, the *rmarkdown* workflow and some organisationnal rules cover most of these rules.
 
+Be welcome to expose in the comments your own way to follow these rules!
 

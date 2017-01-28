@@ -127,4 +127,4 @@ Be welcome to expose in the comments your own way to follow these rules!
 
 # Image copyrigth
 
-All the images of this post are from [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) or are my own with the notable exeption of the PHD comic strip from [http://phdcomics.com/].
+All the images of this post are from [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) or are my own with the notable exeption of the PHD comic strip from [phdcomics.com](http://phdcomics.com/).

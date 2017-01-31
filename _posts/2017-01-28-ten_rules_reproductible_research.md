@@ -12,7 +12,7 @@ categories:
 "[Ten Simple Rules for Reproducible Computational Research](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285)" is a
 freely available paper on [PLOS computational biology](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285).
 
-As [I'm currently very interested]({% post_url 2017-01-19-reproducible_analysis_my_principles %}) on the subject of reproducible data analysis, I will these ten rules and the possible implementation in R with my point of view of epidemiologist interested in healthcare data reuse. I will also check if [my workflow]({% post_url 2017-01-21-implementation_basic_reproductible_workflow%}) comply with these rules.
+As [I'm currently very interested]({% post_url 2017-01-19-reproducible_analysis_my_principles %}) on the subject of reproducible data analysis, I will describe the possible implementation of these ten rules in R with my point of view of epidemiologist interested in healthcare data reuse. I will also check if [my workflow]({% post_url 2017-01-21-implementation_basic_reproductible_workflow%}) comply with these rules.
 
 For those who are in a hurry, I [summarised these rules and possible implementation in R in a table at the end of this post](#summary).
 

@@ -1,0 +1,12 @@
+#- name: Facebook
+#  link: 'https://www.facebook.com/comfusionllc'
+#  social_icon: Facebook
+#  new_window: true
+- name: RSS
+  link: '/feed.xml'
+  social_icon: RSS
+  new_window: true
+- name: LinkedIn
+  link: https://fr.linkedin.com/in/jorismuller
+  social_icon: Linkedin
+  new_window: true

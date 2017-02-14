@@ -1,22 +1,55 @@
-#Site settings
-title: Joris Muller's Blog
-email: jomuller@jom.link
-description: > # this means to ignore newlines until "baseurl:"
-    Another blog about data science. 
+locale: "en-US"
+title: Simply data science # Title of your site
+url: "http://blog.jom.link" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://blog.jom.link" 
-github_username:  jomuller
+google_analytics_key: "UA-90761131-1"
 
-permalink:    /:title.html
-# Build settings
-markdown: kramdown 
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
-extensions: [fenced_code_blocks]
-highlighter: rouge 
-comment: true
-google_analytics: UA-90761131-1
-disqus: jomlink
-# gems: [jekyll-paginate]
-# paginate: 5
-# paginate_path: "/page:num/"
+# Default description in social shares for the jekyll-seo-tag gem
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+
+# Author details for the jekyll-seo-tag gem
+author:
+  name: Joris Muller
+  email: contact@jom.link 
+#  twitter: # twitter username without the @ symbol
+
+# Social details for the jekyll-seo-tag gem
+social:
+  name: Simply data science
+  links:
+    - https://github.com/comfusion/strata-reloaded-jekyll-template
+
+github_username: jomuller
+linkedin_username: jorismuller
+
+permalink: pretty
+
+gems:
+  - "jekyll-feed"
+  - "jekyll-seo-tag"
+  - "jekyll-paginate"
+  - "jekyll-sitemap"
+
+# Jekyll SEO Tag
+webmaster_verifications:
+  google: # 1234
+  bing: # 1234
+  alexa: # 1234
+  yandex: # 1234
+
+# -----------
+# CloudCannon
+
+social_icons:
+    #- Facebook
+    # - Google Plus
+    # - Instagram
+  - LinkedIn
+    # - Pinterest
+    # - Tumblr
+    # - Twitter
+    # - YouTube
+  - RSS

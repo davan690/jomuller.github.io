@@ -1,0 +1,22 @@
+#Site settings
+title: Joris Muller's Blog
+email: jomuller@jom.link
+description: > # this means to ignore newlines until "baseurl:"
+    Another blog about data science. 
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://blog.jom.link" 
+github_username:  jomuller
+
+permalink:    /:title.html
+# Build settings
+markdown: kramdown 
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+extensions: [fenced_code_blocks]
+highlighter: rouge 
+comment: true
+google_analytics: UA-90761131-1
+disqus: jomlink
+# gems: [jekyll-paginate]
+# paginate: 5
+# paginate_path: "/page:num/"

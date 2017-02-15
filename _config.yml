@@ -1,12 +1,11 @@
 #Site settings
 title: Joris Muller's Blog
-email: jomuller@jom.link
+email: blog@jom.link
 description: > # this means to ignore newlines until "baseurl:"
-    Another blog about data science. 
+    Simply pragmatic data science 
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://blog.jom.link" 
 github_username:  jomuller
-
 permalink:    /:title.html
 # Build settings
 markdown: kramdown 

@@ -6,7 +6,7 @@ permalink: /about/
 
 This is another blog about data science. I'm not sure this place could be useful to someone but at least it help me to formalize some ideas. I'm a french Medical Doctor specialized in Public Health. My goal is to become a proficient data scientist in infectious diseases prevention.
 
-You can contact me by email at jomuller AT jom DOT link.
+You can contact me by email at blog AT jom DOT link.
 
 If you want to know more about my professionals skills, you are welcome to contact me on [LinkedIn](http://fr.linkedin.com/in/jorismuller).
 

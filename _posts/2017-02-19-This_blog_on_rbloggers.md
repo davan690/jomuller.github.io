@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Find this blog on R-blogger 
+title: This blog on R-bloggers 
 categories: 
     - r 
     - blog

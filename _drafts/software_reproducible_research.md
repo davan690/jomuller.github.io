@@ -6,6 +6,8 @@ categories:
     - Reproductible research
 ---
 
+- picture: computer in the fridge
+
 # Challengers
 
 ## Nothing
@@ -21,6 +23,7 @@ categories:
 # Biblio
 
 - Titus post
+- Vsosh post
 - Docker on r-blogger
 - packrat on r-blogger
 
@@ -39,5 +42,7 @@ Ease of documentation to write to share it | ++ | + | + | +/- | + |
 Archive softwares | - -| +  | +       | ++      | ++ (and OS)   |
 Cost              | 0$ | 0$ |  0$    | 0$      | 0$ for Virtual Box, but high for good VM |
 Size on disk | 0 | Minimal | 
-Platform agnostic | +++ | ++ | ++ | +/- | + (depend of the VM)|
+Example size pet project | 0 |         | 1.18Gb | 4 Gb |
+Platform agnostic | +++ | ++ | ++ | +/- (depend of the VM)|
+System integration| NA  | +++| + | - |
 

@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  The "Ten Simple Rules for Reproducible Computational Research" are easy to reach for R users
+title:  The "ten simple rules for reproducible computational research" are easy to reach for r users
 categories: 
-    - R 
-    - Reproductible research
+    - r 
+    - reproductible research
     - r-bloggers
 ---
 

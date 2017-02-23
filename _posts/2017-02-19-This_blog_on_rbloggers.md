@@ -19,7 +19,7 @@ Putting this blog on R-blogger gives me extra-viewer, far more comments than bef
 
 Furthermore, it pushes me to improve both the content of my posts and the quality of my English!
 
-# How I send posts to R-bloggers?
+# How do I send my posts to R-bloggers?
 
 This blog [use Jekyll](http://jekyllrb.com/). Then when I decide a post is good enough and reach the [R-blogger criteria](https://www.r-bloggers.com/add-your-blog/), I add it to a dedicated category "r-bloggers". Below, an example of the header of [a post]({% post_url 2017-01-28-ten_rules_reproductible_research %}) I send:
 

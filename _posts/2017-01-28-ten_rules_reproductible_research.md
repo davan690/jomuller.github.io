@@ -41,7 +41,7 @@ In other words, one report = one script. But there is an extra step because the 
 
 Before mastering R, I used WYSIWYG softwares like Microsoft Excel, LibreOffice Calc or CDC's EpiInfo. They are easy to use but once the report produced, it was impossible to check the steps or rerun them with new data. Furthermore, human more error-prone than machines. But if you are an R user, the solution is built in : just use R for every step (including data management)! Furthermore, one have to check his coding style and avoid copy-pasting of the code. In my workflow, I embrace [functional programing](http://adv-r.had.co.nz/Functional-programming.html) as much as I can (with a [dedicated folder]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#folders)).
 
-## 3 - *Archive the Exact Versions of All External Programs Used*
+## <a name="software_archive"></a> 3 - *Archive the Exact Versions of All External Programs Used*
 
 Software changes, sometimes at a very high pace like some R packages. Just try to run again a 4-year-old R script that uses ggplot. There is a good chance you will at the minimum have some warnings and even have your script crash. This threat is even greater when the data format change (*e.g.* Microsoft Access and Excel before and after 2007).
 
@@ -121,7 +121,7 @@ This is not exactly the spirit of Sandve advice. He advocate for data and script
 
 # Conclusion
 
-All the 10 rules proposed in [the Sandve paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285) are reachable for a R user. Just by using R itself, the *rmarkdown* workflow and some organisational rules cover most of these rules. [My basic reproductible workflow meet almost all the criterias]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}) with the notable exceptions of the software archive (but it's work in progress with packrat) and the lack of public access (but I can't share everything).
+All the 10 rules proposed in [the Sandve paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285) are reachable for a R user. Just by using R itself, the *rmarkdown* workflow and some organisational rules cover most of these rules. [My basic reproductible workflow meet almost all the criterias]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}) with the notable exceptions of the software archive ([but I'm exploring several solution to fix it]({% post_url 2017-03-03-Reproductibility_software_poor_man %})) and the lack of public access (but I can't share everything).
 
 Be welcome to expose in the comments your own way to follow these rules!
 

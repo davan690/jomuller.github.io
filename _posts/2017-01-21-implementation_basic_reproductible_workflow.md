@@ -176,9 +176,9 @@ This basic workflow works for me because:
 - It's easy to implement and deploy.
 - It's straightforward: peoples who want just to see the reports, know where to see, those who want to reproduce the analysis, just have to use the `run_all.R` file.
 
-# Limits
+# <a name="limits"></a>Limits
 
-There are more layers needed for a perfect data analysis reproducibility (as [described in this article](http://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003285&type=printable)). The main weakness of my workflow is the lack of back up for the good version of the software I use (R' packages included). I already wasn't able rerun an old data analysis due to change in the package used. (*e.g.* deprecated functions in dplyr or disappearance of a package in the CRAN). To improve this, I already try to add [*packrat*](https://cran.r-project.org/web/packages/packrat/index.html) to my workflow but it's been a long time ago and the package wasn't stable enough for my day to day work. Resolution for 2017: give another try to *packrat*!
+There are more layers needed for a perfect data analysis reproducibility (as [described in this article](http://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003285&type=printable)). The main weakness of my workflow is the lack of back up for the good version of the softwares I use (R' packages included). I already wasn't able rerun an old data analysis due to change in the package used. (*e.g.* deprecated functions in dplyr or disappearance of a package in the CRAN). To improve this, I already try to add [*packrat*](https://cran.r-project.org/web/packages/packrat/index.html) to my workflow but it's been a long time ago and the package wasn't stable enough for my day to day work. Resolution for 2017: give another try to *packrat*!
 
 Other improvements possible: run the scripts in a [docker container](https://www.docker.com/) or in a virtual machine. But this adds too much overhead in my daily work. Furthermore, it brake the platform agnostic and simplicity principles.
 

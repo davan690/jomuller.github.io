@@ -39,7 +39,7 @@ In other words, one report = one script. But there is an extra step because the 
 
 ## <a name="manual_steps"></a> 2 - *Avoid Manual Data Manipulation Steps*
 
-Before mastering R, I used WYSIWYG softwares like Microsoft Excel, LibreOffice Calc or CDC's EpiInfo. They are easy to use but once the report produced, it was impossible to check the steps or rerun them with new data. Furthermore, human more error-prone than machines. But if you are an R user, the solution is built in : just use R for every step (including data management)! Furthermore, one have to check his coding style and avoid copy-pasting of the code. In my workflow, I embrace [functional programing](http://adv-r.had.co.nz/Functional-programming.html) as much as I can (with a [dedicated folder]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#folders)).
+Before mastering R, I used WYSIWYG softwares like [Microsoft Excel](http://shotwell.ca/blog/post/r_for_excel_users/), LibreOffice Calc or CDC's EpiInfo. They are easy to use but once the report produced, it was impossible to check the steps or rerun them with new data. Furthermore, human more error-prone than machines. But if you are an R user, the solution is built in : just use R for every step (including data management)! Furthermore, one have to check his coding style and avoid copy-pasting of the code. In my workflow, I embrace [functional programing](http://adv-r.had.co.nz/Functional-programming.html) as much as I can (with a [dedicated folder]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#folders)).
 
 ## <a name="software_archive"></a> 3 - *Archive the Exact Versions of All External Programs Used*
 

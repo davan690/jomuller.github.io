@@ -13,7 +13,7 @@ The goal of **reproducible data analysis** is, [according to the CRAN task view]
 In order to prepare a small talk on this subject for [the next Strasbourg's R user group meeting](https://www.meetup.com/fr-FR/StatsRbourg/events/236895990/), I'm starting a series of blog post. Today I will focus on the goals and constraints of my personal workflow.
 
 
-# Goal of my workflow
+# <a name="Goal"></a> Goal of my workflow
 
 Beside some side projects, I use mainly R in an academic context. For this, I must be able to:
 

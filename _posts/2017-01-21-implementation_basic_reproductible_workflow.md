@@ -187,3 +187,5 @@ Other improvements possible: run the scripts in a [docker container](https://www
 Currently, I'm happy with this workflow. It covers my needs of my daily data analysis reproducibility with few extra work.
 
 In a later post, I will discuss about these possible extension of this basic workflow.
+
+Update: if you want to use this workflow there is an [empty project with this structure](https://github.com/jomuller/empty_project). Just clone it!

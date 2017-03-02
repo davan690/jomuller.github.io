@@ -47,7 +47,7 @@ This is the ideal solution. We will see that it don't exists yet.
 
 In short `Make analysis` -> `Pack everything` -> `Archive` -> `Re-use`.
 
-# Challenger
+# Challengers
 
 5 challengers will be describe here: 
 

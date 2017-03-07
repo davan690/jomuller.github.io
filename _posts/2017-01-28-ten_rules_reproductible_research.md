@@ -34,12 +34,12 @@ The titles below are the exact reproduction of the rules proposed in the Sandve'
 
 ## 1 - *For Every Result, Keep Track of How It Was Produced*
 
-In other words, one report = one script. But there is an extra step because the ability to reproduce a result may rely on previous steps. Sandve advice to note the exact sequence of steps or even better, to allow the direct execution of everything. I implemented this with the "[One report file = one R markdown file]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#report_equal_rmarkdown)" rule and the "[one R script to rule them all]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#run_all)". Another interesting proposition is to use Make files in order to link each part, especially when relying on different software. I already use this to produce my MPH dissertation PDF and I found this perfect in this case. Yet, there two drawback: makefiles are not platform-agnostic and it tends to become a truly labyrinthine system.
+In my workflow, one report = one script. But there is an extra step because the ability to reproduce a result may rely on previous steps. Sandve advice to note the exact sequence of steps or even better, to allow the direct execution of everything. I implemented this with the "[One report file = one R markdown file]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#report_equal_rmarkdown)" rule and the "[one R script to rule them all]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#run_all)". Another interesting proposition is to use *Makefiles* in order to link each part, especially when relying on different software. I already use this to produce my MPH dissertation PDF and I found this perfect in this case. Yet, there two drawback: makefiles are not platform-agnostic and it tends to become a truly labyrinthine system.
 
 
 ## <a name="manual_steps"></a> 2 - *Avoid Manual Data Manipulation Steps*
 
-Before mastering R, I used WYSIWYG softwares like Microsoft Excel, LibreOffice Calc or CDC's EpiInfo. They are easy to use but once the report produced, it was impossible to check the steps or rerun them with new data. Furthermore, human more error-prone than machines. But if you are an R user, the solution is built in : just use R for every step (including data management)! Furthermore, one have to check his coding style and avoid copy-pasting of the code. In my workflow, I embrace [functional programing](http://adv-r.had.co.nz/Functional-programming.html) as much as I can (with a [dedicated folder]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#folders)).
+Before mastering R, I used WYSIWYG softwares like Microsoft Excel, LibreOffice Calc or CDC's EpiInfo. They are easy to use but once the report produced, it was alsmot impossible to check the steps or rerun them with new data. Furthermore, human are more error-prone than machines. Because you an R user (otherwise you weren't reading this blog!), the solution is built in : just use R for every step. Furthermore, one have to check his coding style and avoid copy-pasting of the code. In my workflow, I embrace [functional programing](http://adv-r.had.co.nz/Functional-programming.html) as much as I can (with a [dedicated folder]({% post_url 2017-01-21-implementation_basic_reproductible_workflow %}#folders)).
 
 ## 3 - *Archive the Exact Versions of All External Programs Used*
 
@@ -47,15 +47,15 @@ Software changes, sometimes at a very high pace like some R packages. Just try t
 
 In this case, Sandve points out the need to, at a minimum, note the version number of all the software use. With R, to reach the minimum is easy: just store the results of `sessionInfo()`.  A better practice is to archive all the software and their dependency. Still easy to do in R, by making a copy of your library folders (use `.libPath()` to locate them) when archiving the project. A more elegant way is to use the dedicated package [*packrat*](https://cran.r-project.org/web/packages/packrat/index.html) in your workflow.
 
-Yet it could be not enough. The software we use relies on dependencies that may also rely on some operating system component. In this case storing the image of the [virtual machine](https://en.wikipedia.org/wiki/Virtual_machine) with it hypervisor (*e.g* [Virtual Box](https://en.wikipedia.org/wiki/VirtualBox)) could be a solution. Some drawbacks of VM: it take a lot of space (OS + software + R project) and running a complex analysis in a virtual machine could be slow. Another elegant way is to use [software containers](https://en.wikipedia.org/wiki/Operating-system-level_virtualization) like [Dockers](https://en.wikipedia.org/wiki/Docker_(software)). I have little with the later then I don't use it in my workflow but I plan to give Docker another try.
+Yet it could be not enough. The software we use relies on dependencies that may also rely on some operating system component. In this case storing the image of the [virtual machine](https://en.wikipedia.org/wiki/Virtual_machine) with it hypervisor (*e.g* [Virtual Box](https://en.wikipedia.org/wiki/VirtualBox)) could be a solution. Some drawbacks of VM: it take a lot of space (OS + software + R project) and running a complex analysis in a virtual machine could be slow. Another elegant way is to use [software containers](https://en.wikipedia.org/wiki/Operating-system-level_virtualization) like [Dockers](https://en.wikipedia.org/wiki/Docker_(software)). I have little experience with the later then I don't use it in my workflow but I plan to give Docker another try.
 
-Even with this, there is still a layer missing: the hardware. Recently I tried to open a very old file produced on one of my first computer (a [Macintosh LC4](https://en.wikipedia.org/wiki/Macintosh_LC) under [Mac OS 7](https://en.wikipedia.org/wiki/System_7)). I'm still trying a way to open this binary file... The ultimate reproducible archive is maybe to store the hardware in some bunker.
+Even with this, there is still a layer missing: the hardware. Recently I tried to open a very old file produced on one of my first computer (a [Macintosh LC4](https://en.wikipedia.org/wiki/Macintosh_LC) under [Mac OS 7](https://en.wikipedia.org/wiki/System_7)). I'm still trying to find a way to open this binary file... The ultimate reproducible archive is maybe to store the hardware in some bunker or in a freezer.
 
 <a href="https://commons.wikimedia.org/wiki/File:Kudrna-lc605b.jpg"><img src="/assets/lc_stack.jpg" title="A Macintosh LC stack" style="display: block; margin: auto;" /></a>
 
 ## 4 - *Version Control All Custom Scripts*
 
-Did you ever make a change in your script that breaks everything ? Sometimes, a simple "undo" command is enough to fix it. But the working version of the script could be a quite old one. In this case, you need a system to go back in time.
+Did you ever make a change in your script that breaks everything ? Sometimes, a simple "undo" command is enough to fix it. The working version of the script could be a quite old one. In this case, you need a system to go back in time.
 
 A common practice is to use manually named files ("script_v1.R", "script_v2.R", "script_final.R", "script_finalev2.R"...). It's better than nothing but hard to maintain in the long term.
 
@@ -63,14 +63,13 @@ A common practice is to use manually named files ("script_v1.R", "script_v2.R", 
 
 Just use a [version control](https://en.wikipedia.org/wiki/Version_control) system. If you are using R with Rstudio and don't already have one, [git](https://git-scm.com/) is the natural choice. It is well integrated and allow to interact with GitHub that tends to be ([for good or bad](https://www.wired.com/2015/06/problem-putting-worlds-code-github/)) an unofficial package repository. The learning curve of this software is not steep compared to R.
 
-
 ## <a name="rule5"></a>5 - *Record All Intermediate Results, When Possible in Standardized Formats*
 
 In theory, because we use reproducible data analysis, intermediate results are not mandatory. However a long process could be necessary to produce one results: *e.g.* data importation, cleaning, databases merging and additional variable creation are the first basic parts in my analysis. If I have to re-run all this stack each time I want to make any analysis, I lose a lot of time. 
 
 ![Example of intermediate results](/assets/produced_data.jpg)
 
-In my workflow, intermediate results are mandatory because one R markdown file = one question. The only way to chain all my R markdown files is to use intermediate data files. For example, my first file is almost always "import.Rmd". This import the raw files (csv, xlsx, mdb, web scrapping...). At the end of this R markdown file, I record the results. This way, the data imported are directly available for the next part of the analysis (most of the time data cleaning). 
+In my workflow, intermediate results are mandatory because one R markdown file is focused to one question then there could be a lot of files. The only way to chain all my R markdown files is to use intermediate data files. For example, my first file is almost always "import.Rmd". This import the raw files (csv, xlsx, mdb, web scrapping...). At the end of this R markdown file, I record the results. This way, the data imported are directly available for the next part of the analysis (most of the time data cleaning). 
 
 My preferred format is RDS as [suggested some others](http://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/) with `saveRDS`. Another option is RData. And when it is a really important results, I save it also in .csv, just in case someone else wants to check the data with another software.
 

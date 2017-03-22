@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-This is another blog about data science. I'm not sure this place could be useful to someone but at least it help me to formalize some ideas. I'm a french Medical Doctor specialized in Public Health. My goal is to become a proficient data scientist in infectious diseases prevention.
+This is another blog about data science. I'm not sure this place could be useful to someone but at least it help me to formalize some ideas. I'm a french Medical Doctor specialized in Public Health. My goal is to use data science to improve healthcare keeping privacy of everyone in mind. 
 
 You can contact me by email at blog AT jom DOT link.
 
